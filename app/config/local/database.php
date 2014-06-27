@@ -9,7 +9,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'gestguide',
+			'database'  => 'drivo',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

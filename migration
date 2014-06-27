@@ -1,0 +1,20 @@
+php artisan migrate:make create_user_table --create=user
+php artisan migrate:make create_school_table --create=school
+php artisan migrate:make create_vehicle_table --create=vehicle
+php artisan migrate:make create_licence_table --create=licence
+
+php artisan migrate:make create_price_table --create=price
+php artisan migrate:make create_reservation_table --create=reservation
+
+php artisan migrate:make create_abilitation_user_table --create=abilitation_user
+php artisan migrate:make create_abilitation_vehicle_table --create=abilitation_vehicle
+
+php artisan migrate:make create_calendar_status_table --create=calendar_status
+php artisan migrate:make create_calendar_user_table --create=calendar_user
+php artisan migrate:make create_calendar_school_table --create=calendar_school
+php artisan migrate:make create_calendar_vehicle_table --create=calendar_vehicle
+
+php artisan migrate:make create_address_table --create=address
+php artisan migrate:make create_transfer_table --create=transfer
+
+php artisan migrate

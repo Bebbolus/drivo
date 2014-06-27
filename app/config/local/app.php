@@ -15,6 +15,6 @@ return array(
 
 	'debug' => true,
 
-	'main_path' => 'gestguide/public',
+	'main_path' => 'drivo/public',
 
 );

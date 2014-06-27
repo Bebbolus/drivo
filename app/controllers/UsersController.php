@@ -36,9 +36,9 @@ class UsersController extends \BaseController {
 		$input['surname'] =str_replace(' ', '', trim($input['surname']));
 
 		$validator = Validator::make($input,[
-		'email'=>'required|email|unique:users', 
+		'email'=>'required|email|unique:user', 
 		'password'=>'required|min:8|confirmed',
-		'username'=>'required|min:2|alpha_num|unique:users',
+		'username'=>'required|min:2|alpha_num|unique:user',
 		'name'=>'required|min:2|alpha',
 		'surname'=>'required|min:2|alpha'
 		]);
