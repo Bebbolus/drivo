@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePriceTable extends Migration {
+class CreateUserAbilitationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreatePriceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('prices', function(Blueprint $table)
+		Schema::create('user_abilitations', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->unsignedInteger('id_user');
-			$table->unsignedInteger('id_licence');			
+			$table->unsignedInteger('id_licence');
 			$table->timestamps();
 			
 			$table->foreign('id_user')
@@ -36,7 +36,7 @@ class CreatePriceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('prices');
+		Schema::drop('user_abilitations');
 	}
 
 }

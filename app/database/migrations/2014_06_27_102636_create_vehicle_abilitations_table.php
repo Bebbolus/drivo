@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbilitationVehicleTable extends Migration {
+class CreateVehicleAbilitationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateAbilitationVehicleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('abilitation_vehicles', function(Blueprint $table)
+		Schema::create('vehicle_abilitations', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->unsignedInteger('id_vehicle');
@@ -36,7 +36,7 @@ class CreateAbilitationVehicleTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('abilitation_vehicles');
+		Schema::drop('vehicle_abilitations');
 	}
 
 }

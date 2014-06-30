@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLicenceTable extends Migration {
+class CreateStatusCalendarsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateLicenceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('licences', function(Blueprint $table)
+		Schema::create('status_calendars', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('category', 5);
+			$table->enum('status', array('available', 'not_available'));
 			$table->timestamps();
 		});
 	}
@@ -27,7 +27,7 @@ class CreateLicenceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('licences');
+		Schema::drop('status_calendars');
 	}
 
 }

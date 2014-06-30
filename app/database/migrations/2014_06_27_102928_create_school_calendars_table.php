@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCalendarSchoolTable extends Migration {
+class CreateSchoolCalendarsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCalendarSchoolTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calendar_schools', function(Blueprint $table)
+		Schema::create('school_calendars', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->dateTime('from');
@@ -26,7 +26,7 @@ class CreateCalendarSchoolTable extends Migration {
 				->onDelete('cascade');
 				
 			$table->foreign('id_status')
-				->references('id')->on('calendar_statuses')
+				->references('id')->on('status_calendars')
 				->onDelete('cascade');
 		});
 	}
@@ -38,7 +38,7 @@ class CreateCalendarSchoolTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calendar_schools');
+		Schema::drop('school_calendars');
 	}
 
 }
