@@ -1,0 +1,31 @@
+@extends('layouts.master')
+
+
+@section('breadcrumbs')
+<li class="current">
+	<a href="calendar.html" title="">Calendario</a>
+</li>
+@stop
+
+@section('page_header') 
+	<h3>Dashboard</h3>
+	<span>Ciao {{Auth::user()->username}}, cosa vorresti fare?</span>
+@stop
+
+				
+@section('content')
+	<div class="row">
+		<!--=== Example Box ===-->
+		<div class="col-md-12">
+			<div class="widget box">
+				<div class="widget-header">
+					<h4><i class="icon-reorder"></i> Example Box</h4>
+				</div>
+				<div class="widget-content">
+					<p>Lorem Ipsum.</p>
+				</div>
+			</div>
+		</div> <!-- /.col-md-12 -->
+		<!-- /Example Box -->
+	</div> <!-- /.row -->
+@stop

@@ -1,4 +1,13 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Application Routes for ADMINISTRATION
+|--------------------------------------------------------------------------
+*/
+
+Route::get('start',['uses'=>'PagesController@index'])->before('auth');
+Route::get('home',['uses'=>'PagesController@index'])->before('auth');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -6,15 +15,17 @@
 |--------------------------------------------------------------------------
 */
 
-
-Route::get('/', ['as'=>'home', 'uses'=>'PagesController@index']); //first screen: Home Page
+Route::get('/', function()
+{
+	return View::make('welcome', array('main_path' => Config::get('app.main_path')));
+});
 
 /*
 |--------------------------------------------------------------------------
 | Application LOGIN
 |--------------------------------------------------------------------------
 */
-Route::get('login', [ 'as'=>'login','uses'=>'SessionsController@create']); //login short url
+Route::get('login', [ 'as'=>'login','uses'=>'SessionsController@create']); // Pagina di login
 Route::get('logout', [ 'as'=>'logout','uses'=>'SessionsController@destroy']); //logout short url
 
 
@@ -27,7 +38,7 @@ Route::get('logout', [ 'as'=>'logout','uses'=>'SessionsController@destroy']); //
 */
 
 Route::get('sessions.store', ['as'=>'sessions.store','uses'=>'SessionsController@store']); //user session start
-Route::post('sessions.store', 'SessionsController@store')->before('csrf'); //user session start
+Route::post('sessions.store', 'SessionsController@store')->before('csrf'); //user session stop
 //Route::resource('sessions','SessionsController');
 
 
@@ -35,13 +46,10 @@ Route::post('sessions.store', 'SessionsController@store')->before('csrf'); //use
 |--------------------------------------------------------------------------
 | Application Routes for REGISTER USER
 |--------------------------------------------------------------------------
-*/
+
 
 Route::get('register', 'UsersController@create')->before('guest');
 Route::post('register', ['as'=>'users.store', 'uses'=>'UsersController@store'])->before('csrf');
+*/
 
 
-Route::get('admin', function()
-{
-	return 'Admin Page';
-})->before('auth');
