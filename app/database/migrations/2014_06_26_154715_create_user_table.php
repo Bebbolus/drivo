@@ -18,8 +18,8 @@ class CreateUserTable extends Migration {
 			$table->string('name');
 			$table->string('surname');
 			$table->string('fiscal_code');	
-			$table->string('phone');
-			$table->string('mobile_phone');
+			$table->string('phone')->nullable();
+			$table->string('mobile_phone')->nullable();
 			$table->string('email')->unique();
 			$table->string('group')->nullable();
 			$table->string('username')->unique();

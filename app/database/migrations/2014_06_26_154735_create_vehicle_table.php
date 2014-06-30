@@ -15,15 +15,15 @@ class CreateVehicleTable extends Migration {
 		Schema::create('vehicle', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('type', 50);
-			$table->string('brand', 50);
-			$table->string('model', 50);
-			$table->tinyInteger('fuel');
-			$table->string('engine_size', 50);
-			$table->smallInteger('power');
-			$table->string('licence_number', 10);
-			$table->date('registration_date');
-			$table->boolean('trailer');
+			$table->string('type', 50)->nullable();
+			$table->string('brand', 50)->nullable();
+			$table->string('model', 50)->nullable();
+			$table->tinyInteger('fuel')->nullable();
+			$table->string('engine_size', 50)->nullable();
+			$table->smallInteger('power')->nullable();
+			$table->string('licence_number', 10)->nullable();
+			$table->date('registration_date')->nullable();
+			$table->boolean('trailer')->nullable();
 			$table->unsignedInteger('id_school');
 			$table->unsignedInteger('id_address')->nullable();
 			
