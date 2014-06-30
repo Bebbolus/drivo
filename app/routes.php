@@ -8,6 +8,8 @@
 Route::get('start',['uses'=>'PagesController@index'])->before('auth');
 Route::get('home',['uses'=>'PagesController@index'])->before('auth');
 
+Route::get('admin',['uses'=>'PagesController@admin'])->before('auth');
+
 
 /*
 |--------------------------------------------------------------------------
