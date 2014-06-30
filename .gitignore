@@ -213,3 +213,18 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+#################
+## LARAVEL 4
+#################
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+
+#####################
+## PhpStorm
+#####################
+
+## Directory-based project format
+.idea/
