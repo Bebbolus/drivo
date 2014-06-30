@@ -12,7 +12,7 @@ class CreateLicenceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('licence', function(Blueprint $table)
+		Schema::create('licences', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('category', 5);
@@ -27,7 +27,7 @@ class CreateLicenceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('licence');
+		Schema::drop('licences');
 	}
 
 }

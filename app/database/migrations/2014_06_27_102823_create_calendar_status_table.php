@@ -12,7 +12,7 @@ class CreateCalendarStatusTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calendar_status', function(Blueprint $table)
+		Schema::create('calendar_statuses', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->enum('status', array('available', 'not_available'));
@@ -27,7 +27,7 @@ class CreateCalendarStatusTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calendar_status');
+		Schema::drop('calendar_statuses');
 	}
 
 }

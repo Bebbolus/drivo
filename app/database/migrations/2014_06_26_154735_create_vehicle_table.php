@@ -12,7 +12,7 @@ class CreateVehicleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('vehicle', function(Blueprint $table)
+		Schema::create('vehicles', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('type', 50)->nullable();
@@ -28,11 +28,11 @@ class CreateVehicleTable extends Migration {
 			$table->unsignedInteger('id_address')->nullable();
 			
 			$table->foreign('id_school')
-				->references('id')->on('school')
+				->references('id')->on('schools')
 				->onDelete('cascade');
 			
 			$table->foreign('id_address')
-				->references('id')->on('address')
+				->references('id')->on('addresses')
 				->onDelete('set null');
 		});
 	}
@@ -44,7 +44,7 @@ class CreateVehicleTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('vehicle');
+		Schema::drop('vehicles');
 	}
 
 }

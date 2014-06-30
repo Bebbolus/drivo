@@ -12,7 +12,7 @@ class CreateTransferTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('transfer', function(Blueprint $table)
+		Schema::create('transfers', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->unsignedInteger('id_vehicle');
@@ -22,15 +22,15 @@ class CreateTransferTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_vehicle')
-				->references('id')->on('vehicle')
+				->references('id')->on('vehicles')
 				->onDelete('cascade');
 			
 			$table->foreign('from')
-				->references('id')->on('address')
+				->references('id')->on('addresses')
 				->onDelete('cascade');
 			
 			$table->foreign('to')
-				->references('id')->on('address')
+				->references('id')->on('addresses')
 				->onDelete('cascade');
 		});
 	}
@@ -42,7 +42,7 @@ class CreateTransferTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('transfer');
+		Schema::drop('transfers');
 	}
 
 }

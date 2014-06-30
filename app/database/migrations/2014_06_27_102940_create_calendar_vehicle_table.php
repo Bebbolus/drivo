@@ -12,7 +12,7 @@ class CreateCalendarVehicleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calendar_vehicle', function(Blueprint $table)
+		Schema::create('calendar_vehicles', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->dateTime('from');
@@ -22,11 +22,11 @@ class CreateCalendarVehicleTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_vehicle')
-				->references('id')->on('vehicle')
+				->references('id')->on('vehicles')
 				->onDelete('cascade');
 				
 			$table->foreign('id_status')
-				->references('id')->on('calendar_status')
+				->references('id')->on('calendar_statuses')
 				->onDelete('cascade');
 		});
 	}
@@ -38,7 +38,7 @@ class CreateCalendarVehicleTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calendar_vehicle');
+		Schema::drop('calendar_vehicles');
 	}
 
 }

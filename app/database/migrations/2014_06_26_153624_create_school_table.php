@@ -12,7 +12,7 @@ class CreateSchoolTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('school', function($table)
+		Schema::create('schools', function($table)
 		{
 			$table->increments('id');
 			$table->string('name', 50);
@@ -23,11 +23,11 @@ class CreateSchoolTable extends Migration {
 			$table->unsignedInteger('id_address');
 			
 			$table->foreign('id_consortium')
-				  ->references('id')->on('school')
+				  ->references('id')->on('schools')
 				  ->onDelete('cascade');
 			
 			$table->foreign('id_address')
-				->references('id')->on('address')
+				->references('id')->on('addresses')
 				->onDelete('cascade');
 		});
 	}
@@ -39,7 +39,7 @@ class CreateSchoolTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('school');
+		Schema::drop('schools');
 	}
 
 }

@@ -12,7 +12,7 @@ class CreateAbilitationUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('abilitation_user', function(Blueprint $table)
+		Schema::create('abilitation_users', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->unsignedInteger('id_user');
@@ -20,11 +20,11 @@ class CreateAbilitationUserTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_user')
-				->references('id')->on('user')
+				->references('id')->on('users')
 				->onDelete('cascade');
 			
 			$table->foreign('id_licence')
-				->references('id')->on('licence')
+				->references('id')->on('licences')
 				->onDelete('cascade');
 		});
 	}
@@ -36,7 +36,7 @@ class CreateAbilitationUserTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('abilitation_user');
+		Schema::drop('abilitation_users');
 	}
 
 }

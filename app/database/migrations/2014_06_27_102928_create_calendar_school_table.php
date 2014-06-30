@@ -12,7 +12,7 @@ class CreateCalendarSchoolTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calendar_school', function(Blueprint $table)
+		Schema::create('calendar_schools', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->dateTime('from');
@@ -22,11 +22,11 @@ class CreateCalendarSchoolTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_school')
-				->references('id')->on('school')
+				->references('id')->on('schools')
 				->onDelete('cascade');
 				
 			$table->foreign('id_status')
-				->references('id')->on('calendar_status')
+				->references('id')->on('calendar_statuses')
 				->onDelete('cascade');
 		});
 	}
@@ -38,7 +38,7 @@ class CreateCalendarSchoolTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calendar_school');
+		Schema::drop('calendar_schools');
 	}
 
 }

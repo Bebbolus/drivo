@@ -12,7 +12,7 @@ class CreatePriceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('price', function(Blueprint $table)
+		Schema::create('prices', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->unsignedInteger('id_user');
@@ -20,11 +20,11 @@ class CreatePriceTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_user')
-				->references('id')->on('user')
+				->references('id')->on('users')
 				->onDelete('cascade');
 			
 			$table->foreign('id_licence')
-				->references('id')->on('licence')
+				->references('id')->on('licences')
 				->onDelete('cascade');
 		});
 	}
@@ -36,7 +36,7 @@ class CreatePriceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('price');
+		Schema::drop('prices');
 	}
 
 }

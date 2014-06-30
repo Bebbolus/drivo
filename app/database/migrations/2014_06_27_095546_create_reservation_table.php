@@ -12,7 +12,7 @@ class CreateReservationTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('reservation', function(Blueprint $table)
+		Schema::create('reservations', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->dateTime('from');
@@ -25,23 +25,23 @@ class CreateReservationTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_user')
-				->references('id')->on('user')
+				->references('id')->on('users')
 				->onDelete('cascade');
 			
 			$table->foreign('id_instructor')
-				->references('id')->on('user')
+				->references('id')->on('users')
 				->onDelete('set null');
 			
 			$table->foreign('id_school')
-				->references('id')->on('school')
+				->references('id')->on('schools')
 				->onDelete('cascade');
 			
 			$table->foreign('id_vehicle')
-				->references('id')->on('vehicle')
+				->references('id')->on('vehicles')
 				->onDelete('set null');
 			
 			$table->foreign('id_licence')
-				->references('id')->on('licence')
+				->references('id')->on('licences')
 				->onDelete('set null');
 		});
 	}
@@ -53,7 +53,7 @@ class CreateReservationTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('reservation');
+		Schema::drop('reservations');
 	}
 
 }

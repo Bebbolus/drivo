@@ -12,7 +12,7 @@ class CreateCalendarUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calendar_user', function(Blueprint $table)
+		Schema::create('calendar_users', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->dateTime('from');
@@ -22,11 +22,11 @@ class CreateCalendarUserTable extends Migration {
 			$table->timestamps();
 			
 			$table->foreign('id_user')
-				->references('id')->on('user')
+				->references('id')->on('users')
 				->onDelete('cascade');
 				
 			$table->foreign('id_status')
-				->references('id')->on('calendar_status')
+				->references('id')->on('calendar_statuses')
 				->onDelete('cascade');
 		});
 	}
@@ -38,7 +38,7 @@ class CreateCalendarUserTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calendar_user');
+		Schema::drop('calendar_users');
 	}
 
 }
