@@ -17,19 +17,19 @@ class CreateReservationsTable extends Migration {
 			$table->increments('id');
 			$table->dateTime('from');
 			$table->dateTime('to');
-			$table->unsignedInteger('id_user');
+			$table->unsignedInteger('id_customer');
 			$table->unsignedInteger('id_instructor')->nullable();
 			$table->unsignedInteger('id_school');
 			$table->unsignedInteger('id_vehicle')->nullable();
 			$table->unsignedInteger('id_licence')->nullable();			
 			$table->timestamps();
 			
-			$table->foreign('id_user')
-				->references('id')->on('users')
+			$table->foreign('id_customer')
+				->references('id')->on('customers')
 				->onDelete('cascade');
 			
 			$table->foreign('id_instructor')
-				->references('id')->on('users')
+				->references('id')->on('instructors')
 				->onDelete('set null');
 			
 			$table->foreign('id_school')

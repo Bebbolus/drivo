@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserAbilitationsTable extends Migration {
+class CreateInstructorAbilitationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,15 @@ class CreateUserAbilitationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_abilitations', function(Blueprint $table)
+		Schema::create('instructor_abilitations', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->unsignedInteger('id_user');
+			$table->unsignedInteger('id_instructor');
 			$table->unsignedInteger('id_licence');
 			$table->timestamps();
 			
-			$table->foreign('id_user')
-				->references('id')->on('users')
+			$table->foreign('id_instructor')
+				->references('id')->on('instructors')
 				->onDelete('cascade');
 			
 			$table->foreign('id_licence')
