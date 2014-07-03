@@ -11,6 +11,7 @@ Route::get('home',['uses'=>'PagesController@index'])->before('auth');
 Route::get('admin',['uses'=>'PagesController@admin'])->before('auth');
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes for GUEST
@@ -53,5 +54,3 @@ Route::post('sessions.store', 'SessionsController@store')->before('csrf'); //use
 Route::get('register', 'UsersController@create')->before('guest');
 Route::post('register', ['as'=>'users.store', 'uses'=>'UsersController@store'])->before('csrf');
 */
-
-

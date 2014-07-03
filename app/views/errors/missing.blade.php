@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<title>404 | Melon - Flat &amp; Responsive Admin Template</title>
+	<title>DRIVO | Page not found</title>
 
 	<!--=== CSS ===-->
 
@@ -45,24 +45,24 @@
 <body class="error">
 	<!--=== Error Title ===-->
 	<div class="title">
-		<h1>404</h1> <!-- You can use something like <h1 class="red">500</h1> for other error codes -->
+		<h1>PAGINA NON TROVATA</h1> <!-- You can use something like <h1 class="red">500</h1> for other error codes -->
 	</div>
 	<!-- /Error Title -->
 
 	<div class="actions">
 		<div class="list-group">
 			<li class="list-group-item list-group-header align-center">
-				Ooops! It looks like you have taken a wrong turn.
+				Ooops! Sembra che qualcosa sia andato storto.
 			</li>
-			<a href="index.html" class="list-group-item"><i class="icon-home"></i> Go to Dashboard <i class="icon-angle-right align-right"></i></a>
-			<a href="javascript:void(0);" class="list-group-item"><i class="icon-question"></i> Support <i class="icon-angle-right align-right"></i></a>
-			<a href="javascript:void(0);" class="list-group-item"><i class="icon-phone"></i> Call us <i class="icon-angle-right align-right"></i> <span class="badge">021-215-584</span></a>
+			<a href="home" class="list-group-item"><i class="icon-home"></i> Vai alla pagina iniziale <i class="icon-angle-right align-right"></i></a>
+			<a href="mailto:lambis.net@gmail.com" class="list-group-item"><i class="icon-question"></i> Mail <i class="icon-angle-right align-right"></i></a>
+			<a href="javascript:void(0);" class="list-group-item"><i class="icon-phone"></i> Chiamaci <i class="icon-angle-right align-right"></i> <span class="badge">021-215-584</span></a>
 		</div>
 	</div>
 
 	<!-- Footer -->
 	<div class="footer">
-		Melon - Flat &amp; Responsive Admin Template<br>&copy; 2013
+		DRIVO
 	</div>
 	<!-- /Footer -->
 </body>

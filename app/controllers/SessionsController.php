@@ -14,7 +14,7 @@ class SessionsController extends \BaseController {
 		if(Auth::check()) return Redirect::to('/admin');
 		return View::make('sessions.create', array('main_path' => Config::get('app.main_path')));
 	}
-
+	
 
 	/**
 	 * Store a newly created resource in storage.

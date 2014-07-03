@@ -32,7 +32,7 @@
 .error .title h1,
 .error .footer h1 {
   color: #4d7496;
-  font-size: 120px;
+  font-size: 60px;
   text-shadow: 0 1px 0 #fff;
 }
 .error .title h1.red,

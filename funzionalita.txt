@@ -1,0 +1,49 @@
+GUEST
+	->welcome
+	->login
+		
+USER		
+	->Dashboard --? temp "start" page
+	->profilo
+	
+	
+ADMIN
+	CRUD utente
+	modifica permessi utente
+	CRUD patenti
+	CRUD scuola guida (consorzi)
+	
+SCHOOL ADMIN (ASSOCIATION ADMIN)
+	Anagrafica ISTRUTTORE
+		indisponibilità - tariffe - orari 
+	Anagrafica SCUOLA GUIDA
+		indisponibilità - tariffe - orari
+	Anagrafica VEICOLI
+		indisponibilità
+	Anagrafica SEDI
+		indisponibilità - tempi di trasferta
+	Anagrafica CLIENTI
+	
+	GESTIONE prenotazioni: giorno/settimana/mese
+					per cliente
+					per istruttore
+					per mezzo
+					per patente	
+					
+SCHOOL USER	(ASSOCIATION USER)					
+	Anagrafica CLIENTI
+	GESTIONE prenotazioni: giorno/settimana/mese
+						per cliente
+						per istruttore
+						per mezzo
+						per patente
+
+ISTRUTTORE
+	ISTRUTTORE
+			indisponibilità - tariffe - orari 
+	prenotazioni: giorno/settimana/mese
+						per cliente
+						per istruttore
+						per mezzo
+						per patente	
+	

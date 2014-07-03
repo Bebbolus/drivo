@@ -22,8 +22,12 @@
   clear: both;
 }
 .login {
-  background-color: #f9f9f9;
-  padding-top: 60px;
+ background: url('../../assets/img/bkground.png')no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ padding-top:10%;
   /* Helper */
 
 }
