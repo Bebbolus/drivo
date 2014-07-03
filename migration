@@ -3,6 +3,9 @@ php artisan migrate:make create_school_table --create=school
 php artisan migrate:make create_vehicle_table --create=vehicle
 php artisan migrate:make create_licence_table --create=licence
 
+php artisan migrate:make create_customers_table --create=customers
+php artisan migrate:make create_instructors_table --create=instructors
+
 php artisan migrate:make create_price_table --create=price
 php artisan migrate:make create_reservation_table --create=reservation
 
