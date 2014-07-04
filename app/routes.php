@@ -5,11 +5,19 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('home',['as'=>'home', 'uses'=>'PagesController@index'])->before('auth');
-Route::get('users.list',['as'=>'usersList', 'uses'=>'UsersController@userList'])->before('role:5');
-Route::get('users.create',['uses'=>'UsersController@create'])->before('role:5');
 
-Route::post('register', ['as'=>'users.store', 'uses'=>'UsersController@store'])->before('csrf');
+
+Route::get('home',['as'=>'home', 'uses'=>'PagesController@index'])->before('auth');
+
+Route::when('admin/*', 'role:5');
+	Route::get ('admin/user/list',  ['as'=>'user.list',     'uses'=>'UsersController@showAll']);
+	//Route::get ('admin/user/show',  ['as'=>'show',        'uses'=>'UsersController@show']);
+	Route::get ('admin/user/create',['as'=>'create',   	  'uses'=>'UsersController@create']);
+	Route::post('admin/user/create',['as'=>'user.store', 'uses'=>'UsersController@store'])->before('csrf');
+	Route::post('admin/user/delete',['as'=>'user.delete', 'uses'=>'UsersController@delete']);
+	//Route::post('admin/user/update',['as'=>'user.update', 'uses'=>'UsersController@update']);
+	Route::get ('admin/user/edit',  ['as'=>'user.edit', 'uses'=>'UsersController@edit'])->before('csrf');
+	
 
 /*
 |--------------------------------------------------------------------------

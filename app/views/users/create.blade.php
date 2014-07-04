@@ -3,7 +3,7 @@
 
 @section('breadcrumbs')
 <li class="current">
-	<a href="/{{$main_path}}/users.create" title="">Aggiungi Utente</a>
+	<a href="/{{$main_path}}/admin/user/create" title="">Aggiungi Utente</a>
 </li>
 @stop
 
@@ -23,7 +23,7 @@
 								</div>
 							</div>
 							<div class="widget-content">
-								{{ Form::open(array('route' => 'users.store', 'class'=>'form-horizontal')) }}
+								{{ Form::open(array('route' => 'user.store', 'class'=>'form-horizontal')) }}
 									<div class="form-wizard">
 										<div class="form-body">
 

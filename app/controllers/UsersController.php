@@ -60,7 +60,7 @@ class UsersController extends \BaseController {
 		//Auth::login($user);
 
 
-		return Redirect::to('users.list')->with('message', 'Utente Creato');
+		return Redirect::to('admin/user/list')->with('message', 'Utente Creato');
 	}
 
 
@@ -70,23 +70,11 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show()
+	public function showAll()
 	{
-		//
+		return View::make('users.list', array('main_path' => Config::get('app.main_path'), 'allUser'=> $this->getAllUser() ));
 	}
 
-	
-	/**
-	 * Display the all Users.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function userList()
-	{
-		//route to all users list view "usersList"
-		return View::make('admin.usersList', array('main_path' => Config::get('app.main_path'), 'allUser'=> $this->getAllUser() ));
-	}
 	
 	public function getAllUser()
 	{
@@ -124,9 +112,29 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function delete()
 	{
-		//
+		
+		$input=Input::all();
+	
+		$validator = Validator::make($input,[
+		'id'=>'required|numeric'
+		]);
+
+
+
+		if($validator->fails())
+		{
+			return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
+		
+		$user = User::find(Input::get('id'));
+		
+		echo "sto per eliminare " . $user->username;
+		$user->delete();
+		
+		return Redirect::to('/admin/user/list')->with('message', 'Utente Eliminato');
+		
 	}
 
 }

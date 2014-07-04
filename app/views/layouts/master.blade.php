@@ -7,7 +7,7 @@
 	<!--=== CSS ===-->
 
 	<!-- Bootstrap -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	{{ HTML::style('bootstrap/css/bootstrap.min.css') }}
 
 	<!-- jQuery UI -->
 	<!--<link href="plugins/jquery-ui/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />-->
@@ -16,12 +16,12 @@
 	<![endif]-->
 
 	<!-- Theme -->
-	<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+	{{ HTML::style('assets/css/main.css') }}
+	{{ HTML::style('assets/css/plugins.css') }}
+	{{ HTML::style('assets/css/responsive.css') }}
+	{{ HTML::style('assets/css/icons.css') }}
+	{{ HTML::style('assets/css/fontawesome/font-awesome.min.css') }}
 
-	<link rel="stylesheet" href="assets/css/fontawesome/font-awesome.min.css">
 	<!--[if IE 7]>
 		<link rel="stylesheet" href="assets/css/fontawesome/font-awesome-ie7.min.css">
 	<![endif]-->
@@ -29,12 +29,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
 	<!--=== JavaScript ===-->
-
-	<script type="text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/js/libs/lodash.compat.min.js"></script>
+	{{ HTML::script('assets/js/libs/jquery-1.10.2.min.js') }}
+	{{ HTML::script('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') }}
+	
+	{{ HTML::script('bootstrap/js/bootstrap.min.js') }}
+	{{ HTML::script('assets/js/libs/lodash.compat.min.js') }}
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -42,23 +41,26 @@
 	<![endif]-->
 
 	<!-- Smartphone Touch Events -->
-	<script type="text/javascript" src="plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
-	<script type="text/javascript" src="plugins/event.swipe/jquery.event.move.js"></script>
-	<script type="text/javascript" src="plugins/event.swipe/jquery.event.swipe.js"></script>
+	{{ HTML::script('plugins/touchpunch/jquery.ui.touch-punch.min.js') }}
+	{{ HTML::script('plugins/event.swipe/jquery.event.move.js') }}
+	{{ HTML::script('plugins/event.swipe/jquery.event.swipe.js') }}
+	
 
 	<!-- General -->
-	<script type="text/javascript" src="assets/js/libs/breakpoints.js"></script>
-	<script type="text/javascript" src="plugins/respond/respond.min.js"></script> <!-- Polyfill for min/max-width CSS3 Media Queries (only for IE8) -->
-	<script type="text/javascript" src="plugins/cookie/jquery.cookie.min.js"></script>
-	<script type="text/javascript" src="plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script type="text/javascript" src="plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+	{{ HTML::script('assets/js/libs/breakpoints.js') }}
+	{{ HTML::script('plugins/respond/respond.min.js') }} <!-- Polyfill for min/max-width CSS3 Media Queries (only for IE8) -->
+
+	
+	{{ HTML::script('plugins/cookie/jquery.cookie.min.js') }}
+	{{ HTML::script('plugins/slimscroll/jquery.slimscroll.min.js') }}
+	{{ HTML::script('plugins/slimscroll/jquery.slimscroll.horizontal.min.js') }}
 
 	<!-- App -->
-	<script type="text/javascript" src="assets/js/app.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.form-components.js"></script>
+	{{ HTML::script('assets/js/app.js') }}
+	{{ HTML::script('assets/js/plugins.js') }}
+	{{ HTML::script('assets/js/plugins.form-components.js') }}
 	
-	@yield('specific_plugin')
+	@yield('specific_plugin')   {{-- SEZIONE SPECIFICA PER INSERIRE I PLUG-IN RELATIVI A PARTICOLARI PAGINE  --}}
 	
 	<script>
 	$(document).ready(function(){
@@ -84,7 +86,7 @@
 
 			<!-- Logo -->
 			<a class="navbar-brand" href="/{{$main_path}}/home">
-				<img src="assets/img/logo_ico.png" alt="logo" />
+				{{ HTML::image('assets/img/logo_ico.png', 'logo') }}
 				<strong>DRIVO</strong>
 			</a>
 			<!-- /logo -->
@@ -126,37 +128,14 @@
 		<div id="sidebar" class="sidebar-fixed">
 			<div id="sidebar-content">
 
-				<!--=== Navigation ===-->
-				<ul id="nav">
-					<li>					
-						<a href="javascript:void(0);">
-							<i class="icon-user"></i>
-							Gestione Utenti
-							<span class="label label-info pull-right">2</span>
-						</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="/{{$main_path}}/users.list">
-								<i class="icon-angle-right"></i>
-								Lista Utenti
-								</a>
-							</li>
-							<li>
-								<a href="/{{$main_path}}/users.create">
-								<i class="icon-angle-right"></i>
-								Aggiungi Utente
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="/{{$main_path}}/">
-							<i class="icon-dashboard"></i>
-							Entry #1
-						</a>
-					</li>
-				</ul>
-				<!-- /Navigation -->
+				@if (Auth::user()->group == '5')
+					@include('layouts.navigation.admin')
+					
+				@elseif (Auth::user()->group <= '5')
+					@include('layouts.navigation.user')
+				@endif
+				
+				
 			</div>
 			<div id="divider" class="resizeable"></div>
 		</div>

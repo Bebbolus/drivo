@@ -2,15 +2,15 @@
 
 @section('specific_plugin')
 	<!-- DataTables -->
-	<script type="text/javascript" src="plugins/datatables/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="plugins/datatables/DT_bootstrap.js"></script>
-	<script type="text/javascript" src="plugins/datatables/responsive/datatables.responsive.js"></script> <!-- optional -->
+	{{ HTML::script('plugins/datatables/jquery.dataTables.min.js') }}
+	{{ HTML::script('plugins/datatables/DT_bootstrap.js') }}
+	{{ HTML::script('plugins/datatables/responsive/datatables.responsive.js') }}
 @stop
 
 
 @section('breadcrumbs')
 <li class="current">
-	<a href="/{{$main_path}}/users.list" title="">Lista Utenti</a>
+	<a href="/{{$main_path}}/admin/user/list" title="">Lista Utenti</a>
 </li>
 @stop
 
@@ -54,12 +54,18 @@
 							<tr>
 								<td class="align-center">
 									<span class="btn-group">
-										<a href="javascript:void(0);" class="btn btn-xs bs-tooltip" title="Edit"><i class="icon-pencil"></i></a>
+										{{ Form::open(array('route' => 'user.edit', 'class'=>'form-horizontal')) }}	
+										{{ Form::hidden('id', $element->id) }}
+										{{ HTML::decode(Form::button('<i class="icon-pencil"></i>', array('class'=>'btn btn-xs bs-tooltip', 'type'=>'submit'))) }}
+										{{ Form::close() }}
 									</span>
 								</td>
 								<td class="align-center">
 									<span class="btn-group">
-										<a href="javascript:void(0);" class="btn btn-xs bs-tooltip" title="Delete"><i class="icon-trash"></i></a>
+										{{ Form::open(array('route' => 'user.delete', 'class'=>'form-horizontal')) }}	
+										{{ Form::hidden('id', $element->id) }}
+										{{ HTML::decode(Form::button('<i class="icon-trash"></i>', array('class'=>'btn btn-xs bs-tooltip', 'type'=>'submit'))) }}
+										{{ Form::close() }}
 									</span>
 								</td>
 								<td>{{$element->username}}</td>
