@@ -8,18 +8,22 @@
 	<!--=== CSS ===-->
 
 	<!-- Bootstrap -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	{{ HTML::style('bootstrap/css/bootstrap.min.css') }}
 
 	<!-- Theme -->
-	<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+	{{ HTML::style('assets/css/main.css') }}
+	{{ HTML::style('assets/css/plugins.css') }}
+	{{ HTML::style('assets/css/responsive.css') }}
+	{{ HTML::style('assets/css/icons.css') }}
+	
+	
+	{{ HTML::style('assets/css/fontawesome/font-awesome.min.css') }}
+	
 
 	<!-- Login -->
-	<link href="assets/css/error.css" rel="stylesheet" type="text/css" />
+	{{ HTML::style('assets/css/error.css') }}
 
-	<link rel="stylesheet" href="assets/css/fontawesome/font-awesome.min.css">
+
 	<!--[if IE 7]>
 		<link rel="stylesheet" href="assets/css/fontawesome/font-awesome-ie7.min.css">
 	<![endif]-->
@@ -29,12 +33,13 @@
 	<![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
+	
+	
 	<!--=== JavaScript ===-->
-
-	<script type="text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
-
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/js/libs/lodash.compat.min.js"></script>
+	{{ HTML::script('assets/js/libs/jquery-1.10.2.min.js') }}
+	
+	{{ HTML::script('bootstrap/js/bootstrap.min.js') }}
+	{{ HTML::script('assets/js/libs/lodash.compat.min.js') }}
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -54,9 +59,16 @@
 			<li class="list-group-item list-group-header align-center">
 				Ooops! Sembra che qualcosa sia andato storto.
 			</li>
-			<a href="home" class="list-group-item"><i class="icon-home"></i> Vai alla pagina iniziale <i class="icon-angle-right align-right"></i></a>
-			<a href="mailto:lambis.net@gmail.com" class="list-group-item"><i class="icon-question"></i> Mail <i class="icon-angle-right align-right"></i></a>
+			
+			<!-- torna alla home page -->
+			{{ HTML::decode(link_to_route('home', '<i class="icon-home"></i>Vai alla pagina iniziale<i class="icon-angle-right align-right"></i>',[], ['class' => 'list-group-item']))}} 
+			
+			<!-- mail -->
+			{{ HTML::decode( HTML::mailto('lambis.net@gmail.com','<i class="icon-question"></i> Mail <i class="icon-angle-right align-right"></i>',['class' => 'list-group-item']))}}
+			
+			<!-- chiamaci -->
 			<a href="javascript:void(0);" class="list-group-item"><i class="icon-phone"></i> Chiamaci <i class="icon-angle-right align-right"></i> <span class="badge">021-215-584</span></a>
+		
 		</div>
 	</div>
 
