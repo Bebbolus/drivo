@@ -38,6 +38,15 @@ Route::filter('auth', function()
 	if (Auth::guest()) return Redirect::guest('login');
 });
 
+Route::filter('role', function($route, $request, $level)
+{
+	if (Auth::guest() or ((Auth::user()->group)<$level)) 
+	{
+		App::abort(403);
+	}
+});
+
+
 
 Route::filter('auth.basic', function()
 {

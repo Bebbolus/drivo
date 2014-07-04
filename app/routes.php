@@ -5,12 +5,11 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('start',['uses'=>'PagesController@index'])->before('auth');
-Route::get('home',['uses'=>'PagesController@index'])->before('auth');
+Route::get('home',['as'=>'home', 'uses'=>'PagesController@index'])->before('auth');
+Route::get('users.list',['as'=>'usersList', 'uses'=>'UsersController@userList'])->before('role:5');
+Route::get('users.create',['uses'=>'UsersController@create'])->before('role:5');
 
-Route::get('admin',['uses'=>'PagesController@admin'])->before('auth');
-
-
+Route::post('register', ['as'=>'users.store', 'uses'=>'UsersController@store'])->before('csrf');
 
 /*
 |--------------------------------------------------------------------------
@@ -32,25 +31,19 @@ Route::get('login', [ 'as'=>'login','uses'=>'SessionsController@create']); // Pa
 Route::get('logout', [ 'as'=>'logout','uses'=>'SessionsController@destroy']); //logout short url
 
 
-
-
 /*
 |--------------------------------------------------------------------------
-| Application Routes for AUTHENTICATED USER
+| Application Routes for USER AUTENTICATION
 |--------------------------------------------------------------------------
 */
 
 Route::get('sessions.store', ['as'=>'sessions.store','uses'=>'SessionsController@store']); //user session start
 Route::post('sessions.store', 'SessionsController@store')->before('csrf'); //user session stop
-//Route::resource('sessions','SessionsController');
 
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes for REGISTER USER
+| Application Routes for USER REGISTRATION from GUEST
 |--------------------------------------------------------------------------
-
-
 Route::get('register', 'UsersController@create')->before('guest');
-Route::post('register', ['as'=>'users.store', 'uses'=>'UsersController@store'])->before('csrf');
 */

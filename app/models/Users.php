@@ -12,9 +12,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 	protected $fillable = [
-							'name',
-							'surname',
-							'fiscal_code',
 							'email',
 							'username',
 							'password',
@@ -87,5 +84,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
-
 }

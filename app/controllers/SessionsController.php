@@ -11,7 +11,7 @@ class SessionsController extends \BaseController {
 	 */
 	public function create()
 	{
-		if(Auth::check()) return Redirect::to('/admin');
+		if(Auth::check()) return Redirect::to('/home');
 		return View::make('sessions.create', array('main_path' => Config::get('app.main_path')));
 	}
 	
@@ -25,7 +25,7 @@ class SessionsController extends \BaseController {
 	{
 
 
-		$validator = Validator::make(Input::all(),['email'=>'required|email', 'password'=>'required|min:1']);
+		$validator = Validator::make(Input::all(),['email'=>'required|email', 'password'=>'required|min:6']);
 
 		if($validator->fails())
 		{
@@ -34,7 +34,6 @@ class SessionsController extends \BaseController {
 
 		if(Auth::attempt(Input::only('email','password')))
 		{
-			//return View::make()"Ciao " . Auth::user()->username . ", ben tornato!";
 			return View::make('start', array('main_path' => Config::get('app.main_path')))->withFlashMessage('Login effettuato con successo');
 		}
 		return Redirect::back()->withInput()->with('errore','Email o Password non valide');

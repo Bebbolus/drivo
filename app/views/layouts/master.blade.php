@@ -58,6 +58,8 @@
 	<script type="text/javascript" src="assets/js/plugins.js"></script>
 	<script type="text/javascript" src="assets/js/plugins.form-components.js"></script>
 	
+	@yield('specific_plugin')
+	
 	<script>
 	$(document).ready(function(){
 		"use strict";
@@ -81,7 +83,7 @@
 			</ul>
 
 			<!-- Logo -->
-			<a class="navbar-brand" href="/{{$main_path}}">
+			<a class="navbar-brand" href="/{{$main_path}}/home">
 				<img src="assets/img/logo_ico.png" alt="logo" />
 				<strong>DRIVO</strong>
 			</a>
@@ -95,7 +97,7 @@
 
 			<!-- Top Left Menu -->
 			<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
-				<li><a href="/{{$main_path}}">Home</a></li>
+				<li><a href="/{{$main_path}}/home">Home</a></li>
 			</ul>
 			<!-- /Top Left Menu -->
 
@@ -126,26 +128,32 @@
 
 				<!--=== Navigation ===-->
 				<ul id="nav">
-					<li class="current">
-						<a href="index.html">
-							<i class="icon-dashboard"></i>
-							Entry #1
-						</a>
-					</li>
-					<li>
+					<li>					
 						<a href="javascript:void(0);">
-							<i class="icon-desktop"></i>
-							Entry #2
-							<span class="label label-info pull-right">6</span>
+							<i class="icon-user"></i>
+							Gestione Utenti
+							<span class="label label-info pull-right">2</span>
 						</a>
 						<ul class="sub-menu">
 							<li>
-								<a href="ui_general.html">
+								<a href="/{{$main_path}}/users.list">
 								<i class="icon-angle-right"></i>
-								Entry #2.1
+								Lista Utenti
+								</a>
+							</li>
+							<li>
+								<a href="/{{$main_path}}/users.create">
+								<i class="icon-angle-right"></i>
+								Aggiungi Utente
 								</a>
 							</li>
 						</ul>
+					</li>
+					<li>
+						<a href="/{{$main_path}}/">
+							<i class="icon-dashboard"></i>
+							Entry #1
+						</a>
 					</li>
 				</ul>
 				<!-- /Navigation -->

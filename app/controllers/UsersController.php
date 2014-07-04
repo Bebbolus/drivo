@@ -32,15 +32,11 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$input=Input::all();
-		$input['name'] =str_replace(' ', '', trim($input['name']));
-		$input['surname'] =str_replace(' ', '', trim($input['surname']));
-
+	
 		$validator = Validator::make($input,[
 		'email'=>'required|email|unique:users', 
 		'password'=>'required|min:8|confirmed',
-		'username'=>'required|min:2|alpha_num|unique:users',
-		'name'=>'required|min:2|alpha',
-		'surname'=>'required|min:2|alpha'
+		'username'=>'required|min:2|alpha_num|unique:users'
 		]);
 
 
@@ -57,13 +53,14 @@ class UsersController extends \BaseController {
 			'password' => Hash::make(Input::get('password')),
 			'username'=>Input::get('username'),
 			'name'=>Input::get('name'),
-			'surname'=>Input::get('surname')
+			'surname'=>Input::get('surname'),
+			'group'=>'0'
 		]);
 
-		Auth::login($user);
+		//Auth::login($user);
 
 
-		return Redirect::home();
+		return Redirect::to('users.list')->with('message', 'Utente Creato');
 	}
 
 
@@ -73,11 +70,29 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
 		//
 	}
 
+	
+	/**
+	 * Display the all Users.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function userList()
+	{
+		//route to all users list view "usersList"
+		return View::make('admin.usersList', array('main_path' => Config::get('app.main_path'), 'allUser'=> $this->getAllUser() ));
+	}
+	
+	public function getAllUser()
+	{
+		$list = User::all();
+		return $list;
+	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -113,6 +128,5 @@ class UsersController extends \BaseController {
 	{
 		//
 	}
-
 
 }
