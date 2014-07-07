@@ -7,13 +7,10 @@ class UsersTableSeeder extends Seeder {
 		Eloquent::unguard();
         
 		User::create([	
-		'name'=> 'Pippo',
-		'surname'=>'Inzaghi',
-		'fiscal_code'=>'PPNZG121212FRM',
 		'email'=>'pippo@inzaghi.com',
 		'username'=>'PippoInzaghi',
 		'password'=>Hash::make('pippoinzaghi'),
-		'group'=>'0'
+		'group'=>'5'
 		]);
     }
 
