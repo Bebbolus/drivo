@@ -1,14 +1,14 @@
 GUEST
-	->welcome
-	->login
+	X->welcome
+	X->login
 		
 USER		
 	->Dashboard --? temp "start" page
 	
 	
 ADMIN
-	CRUD utente
-	modifica permessi utente
+	X-> CRUD utente
+	X-> modifica permessi utente
 	CRUD patenti
 	CRUD scuola guida (consorzi)
 	
