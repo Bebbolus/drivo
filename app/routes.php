@@ -15,9 +15,15 @@ Route::when('admin/*', 'role:5');
 	Route::get ('admin/user/create',['as'=>'create',   	  'uses'=>'UsersController@create']);
 	Route::post('admin/user/create',['as'=>'user.store', 'uses'=>'UsersController@store'])->before('csrf');
 	Route::post('admin/user/delete',['as'=>'user.delete', 'uses'=>'UsersController@delete']);
-	//Route::post('admin/user/update',['as'=>'user.update', 'uses'=>'UsersController@update']);
-	Route::get ('admin/user/edit',  ['as'=>'user.edit', 'uses'=>'UsersController@edit'])->before('csrf');
+	Route::post('admin/user/update',['as'=>'user.update', 'uses'=>'UsersController@update'])->before('csrf');
+	//Route::get ('admin/user/edit',  ['as'=>'user.edit', 'uses'=>'UsersController@edit']);
 	
+	
+	Route::get('admin/user/edit/{id}', array('as' => 'user.edit', function($id) 
+	{
+		return View::make('users.edit', array('main_path' => Config::get('app.main_path'))) 
+			->with('user', User::findOrFail($id));
+	}));
 
 /*
 |--------------------------------------------------------------------------
