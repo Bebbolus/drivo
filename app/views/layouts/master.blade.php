@@ -84,8 +84,11 @@
 				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
 			</ul>
 
-			<!-- Logo -->		
-			{{ HTML::decode(link_to_route('home', HTML::image('assets/img/logo_ico.png', 'logo') . '<strong>DRIVO</strong>', [], ['class'=>'navbar-brand']))}} 
+			<!-- Logo -->
+			<a class="navbar-brand" href="/{{$main_path}}/home">
+				{{ HTML::image('assets/img/logo_ico.png', 'logo') }}
+				<strong>DRIVO</strong>
+			</a>
 			<!-- /logo -->
 
 			<!-- Sidebar Toggler -->
@@ -95,11 +98,8 @@
 			<!-- /Sidebar Toggler -->
 
 			<!-- Top Left Menu -->
-			
 			<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
-				<li>
-				{{ HTML::linkRoute('home', 'HOME')}} 
-				</li>
+				<li><a href="/{{$main_path}}/home">Home</a></li>
 			</ul>
 			<!-- /Top Left Menu -->
 
@@ -113,9 +113,7 @@
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li>							
-							{{ HTML::decode(link_to_route('logout', '<i class="icon-key"></i> Esci'))}} 
-						</li>
+						<li><a href="/{{$main_path}}/logout"><i class="icon-key"></i> Esci</a></li>
 					</ul>
 				</li>
 				<!-- /user login dropdown -->

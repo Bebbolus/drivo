@@ -88,9 +88,9 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit()
+	public function edit($id)
 	{
-		return View::make('users.edit', array('main_path' => Config::get('app.main_path')))->with('user', User::find($id));;
+		//
 	}
 
 
@@ -100,32 +100,9 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update()
+	public function update($id)
 	{
-		$input=Input::all();
-	
-		$validator = Validator::make($input,[
-		'email'=>'required|email', 
-		'username'=>'required|min:2|alpha_num',
-		'group'=>'required',
-		'id'=>'required|numeric|exists:users,id'
-		]);
-
-		$user = User::find(Input::get('id'));
-
-		if($validator->fails())
-		{
-			return Redirect::back()->withInput()->withErrors($validator->messages());
-		}
-		
-		
-		$user->email = Input::get('email');
-		$user->username= Input::get('username');
-		$user->group= Input::get('group');
-		
-		$user->save();
-
-		return Redirect::to('admin/user/list')->with('message', 'Utente Modificato con successo!');
+		//
 	}
 
 
@@ -141,7 +118,7 @@ class UsersController extends \BaseController {
 		$input=Input::all();
 	
 		$validator = Validator::make($input,[
-		'id'=>'required|numeric|exists:users,id'
+		'id'=>'required|numeric'
 		]);
 
 

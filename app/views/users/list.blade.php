@@ -54,7 +54,8 @@
 							<tr>
 								<td class="align-center">
 									<span class="btn-group">
-										{{ Form::open(array('url' => 'admin/user/edit/'. $element->id, 'method' => 'get','class'=>'form-horizontal')) }}	
+										{{ Form::open(array('route' => 'user.edit', 'class'=>'form-horizontal')) }}	
+										{{ Form::hidden('id', $element->id) }}
 										{{ HTML::decode(Form::button('<i class="icon-pencil"></i>', array('class'=>'btn btn-xs bs-tooltip', 'type'=>'submit'))) }}
 										{{ Form::close() }}
 									</span>
