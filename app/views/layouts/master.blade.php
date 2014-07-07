@@ -130,7 +130,7 @@
 		<div id="sidebar" class="sidebar-fixed">
 			<div id="sidebar-content">
 
-				@if (Auth::user()->group == '5')
+				@if (Auth::user()->group >= '5')
 					@include('layouts.navigation.admin')
 					
 				@elseif (Auth::user()->group <= '5')

@@ -34,6 +34,8 @@ class CreateVehiclesTable extends Migration {
 			$table->foreign('id_address')
 				->references('id')->on('addresses')
 				->onDelete('set null');
+			
+			$table->timestamps();
 		});
 	}
 

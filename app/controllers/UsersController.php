@@ -60,7 +60,7 @@ class UsersController extends \BaseController {
 		//Auth::login($user);
 
 
-		return Redirect::to('admin/user/list')->with('message', 'Utente Creato');
+		return Redirect::to('admin/user/list')->with('messages', 'Utente Creato');
 	}
 
 
