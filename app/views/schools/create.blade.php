@@ -15,7 +15,7 @@
 					<div class="col-md-12">
 						<div class="widget box" id="form_wizard">
 							<div class="widget-header">
-								<h4><i class="icon-reorder"></i> Aggiungi Utente</h4>
+								<h4><i class="icon-reorder"></i> Aggiungi Autoscuola</h4>
 								<div class="toolbar no-padding">
 									<div class="btn-group">
 										<span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
@@ -44,7 +44,7 @@
 
 												<!--=== Basic Information ===-->
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block padding-bottom-10px">Inserisci i seguenti dati:</h3>
+													<!--h3 class="block padding-bottom-10px">Inserisci Autoscuola:</h3-->
 
 													<div class="form-group">
 														<label class="control-label col-md-3">Nome Scuola <span class="required">*</span></label>
@@ -107,6 +107,74 @@
 															}}
 														</div>
 													</div>
+													
+																				<!--=== Basic Information ===-->
+												<div class="tab-pane active" id="tab1">
+													<!--h3 class="block padding-bottom-10px">Sede dell'autoscuola:</h3-->
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Via <span class="required">*</span></label>
+														<div class="col-md-4">
+															{{ Form::text('address', '', array('class' => 'form-control required', 'id'=>'address', 'required'=>'required')) }}
+															{{
+																$errors->first('address', '
+																						<div class="alert alert-danger alert-block">
+																							<button type="button" class="close" data-dismiss="alert">&times;</button>
+																							<h4>Attenzione!</h4>
+																							Si prega di fornire un indirizzo valido.
+																						</div>
+																						')
+															}}
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Citt&agrave; <span class="required">*</span> </label>
+														<div class="col-md-4">
+															{{ Form::text('city', '', array('class' => 'form-control', 'id'=>'city')) }}
+															{{	$errors->first('city', '
+																						<div class="alert alert-danger alert-block">
+																							<button type="button" class="close" data-dismiss="alert">&times;</button>
+																							<h4>Attenzione!</h4>
+																							Si prega di fornire un nome di citt&agrave; valido.
+																						</div>
+																						')
+															}}
+														</div>
+													</div>
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Provincia <span class="required">*</span></label>
+														<div class="col-md-4">
+															{{ Form::text('province', '', array('class' => 'form-control required', 'id'=>'province', 'required'=>'required')) }}
+															{{	$errors->first('province', '
+																						<div class="alert alert-danger alert-block">
+																							<button type="button" class="close" data-dismiss="alert">&times;</button>
+																							<h4>Attenzione!</h4>
+																							Si prega di fornire una Provincia valida.
+																						</div>
+																						')
+															}}
+														</div>
+													</div>
+													
+													<div class="form-group">
+														<label class="control-label col-md-3">CAP <span class="required">*</span></label>
+														<div class="col-md-4">
+															{{ Form::text('zip', '', array('class' => 'form-control', 'id'=>'zip')) }}
+															{{	$errors->first('zip', '
+																						<div class="alert alert-danger alert-block">
+																							<button type="button" class="close" data-dismiss="alert">&times;</button>
+																							<h4>Attenzione!</h4>
+																							Si prega di fornire un numero di CAP valido.
+																						</div>
+																						')
+															}}
+														</div>
+													</div>
+												</div>
+												<!-- /Basic Information -->
 												</div>
 												<!-- /Basic Information -->
 
@@ -114,8 +182,8 @@
 											</div>
 											<!-- /Tab Content -->
 										</div>
-
-										<!--=== Form Actions ===-->
+									</div>
+<!--=== Form Actions ===-->
 										<div class="form-actions fluid">
 											<div class="row">
 												<div class="col-md-12">
@@ -134,5 +202,6 @@
 		</div> <!-- /.col-md-12 -->
 		<!-- /Example Box -->
 	</div> <!-- /.row -->
+	
 @stop
 

@@ -20,7 +20,7 @@ class CreateSchoolsTable extends Migration {
 			$table->string('phone', 50);
 			$table->string('fax', 50)->nullable();
 			$table->unsignedInteger('id_consortium')->nullable();
-			
+			$table->boolean('is_consortium')->default(false);
 			$table->foreign('id_consortium')
 				  ->references('id')->on('schools')
 				  ->onDelete('cascade');			
