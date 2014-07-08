@@ -125,7 +125,25 @@ class SchoolsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$input=Input::all();
+	
+		$validator = Validator::make($input,[
+		'id'=>'required|numeric|exists:school,id'
+		]);
+
+
+
+		if($validator->fails())
+		{
+			return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
+		
+		$school = School::find(Input::get('id'));
+		
+		echo "sto per eliminare " . $school->username;
+		$school->delete();
+		
+		return Redirect::to('/admin/school/list')->with('message', 'Utente Eliminato');
 	}
 
 
