@@ -1,5 +1,5 @@
 <?php
-class ScoolsTableSeeder extends Seeder {
+class SchoolsTableSeeder extends Seeder {
 
     public function run()
     {
