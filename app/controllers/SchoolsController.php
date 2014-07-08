@@ -123,12 +123,12 @@ class SchoolsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function delete()
 	{
 		$input=Input::all();
 	
 		$validator = Validator::make($input,[
-		'id'=>'required|numeric|exists:school,id'
+		'id'=>'required|numeric|exists:schools,id'
 		]);
 
 
