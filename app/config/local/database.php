@@ -8,7 +8,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'localhost:3306',
 			'database'  => 'drivo',
 			'username'  => 'root',
 			'password'  => '',

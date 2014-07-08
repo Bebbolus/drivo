@@ -19,16 +19,11 @@ class CreateSchoolsTable extends Migration {
 			$table->string('email', 50)->nullable();
 			$table->string('phone', 50);
 			$table->string('fax', 50)->nullable();
-			$table->unsignedInteger('id_consortium');
-			$table->unsignedInteger('id_address');
+			$table->unsignedInteger('id_consortium')->nullable();
 			
 			$table->foreign('id_consortium')
 				  ->references('id')->on('schools')
-				  ->onDelete('cascade');
-			
-			$table->foreign('id_address')
-				->references('id')->on('addresses')
-				->onDelete('cascade');
+				  ->onDelete('cascade');			
 				
 			$table->timestamps();
 		});

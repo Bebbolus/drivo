@@ -65,7 +65,7 @@
 													<div class="form-group">
 														<label class="control-label col-md-3">Email </label>
 														<div class="col-md-4">
-															{{ Form::text('email', '', array('class' => 'form-control required', 'id'=>'email', 'required'=>'required')) }}
+															{{ Form::text('email', '', array('class' => 'form-control', 'id'=>'email')) }}
 															{{	$errors->first('email', '
 																						<div class="alert alert-danger alert-block">
 																							<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -96,7 +96,7 @@
 													<div class="form-group">
 														<label class="control-label col-md-3">Fax </label>
 														<div class="col-md-4">
-															{{ Form::text('fax', '', array('class' => 'form-control required', 'id'=>'fax', 'required'=>'required')) }}
+															{{ Form::text('fax', '', array('class' => 'form-control', 'id'=>'fax')) }}
 															{{	$errors->first('fax', '
 																						<div class="alert alert-danger alert-block">
 																							<button type="button" class="close" data-dismiss="alert">&times;</button>

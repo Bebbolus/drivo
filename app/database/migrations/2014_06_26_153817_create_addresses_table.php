@@ -20,7 +20,12 @@ class CreateAddressesTable extends Migration {
 			$table->string('province', 50);
 			$table->string('state', 50);
 			$table->string('zip', 5);
+			$table->unsignedInteger('id_school');
 			$table->timestamps();
+			
+			$table->foreign('id_school')
+			->references('id')->on('schools')
+			->onDelete('cascade');
 		});
 	}
 
