@@ -23,8 +23,6 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
-
-
 		$validator = Validator::make(Input::all(),['email'=>'required|email', 'password'=>'required|min:6']);
 
 		if($validator->fails())

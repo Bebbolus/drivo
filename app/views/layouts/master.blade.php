@@ -133,7 +133,7 @@
 				@if (Auth::user()->group >= '5')
 					@include('layouts.navigation.admin')
 					
-				@elseif (Auth::user()->group <= '5')
+				@elseif (Auth::user()->group < '5')
 					@include('layouts.navigation.user')
 				@endif
 				

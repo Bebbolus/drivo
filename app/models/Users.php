@@ -15,7 +15,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 							'email',
 							'username',
 							'password',
-							'group'
+							'group',
+							'id_school'
 						   ];
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -24,7 +25,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
-	/**
+	public function school()
+    {
+        return $this->belongsTo('Schools', 'id_school', 'id');
+    }
+    
+    /**
 	 * Get the unique identifier for the user.
 	 *
 	 * @return mixed

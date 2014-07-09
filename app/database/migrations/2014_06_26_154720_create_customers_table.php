@@ -21,13 +21,18 @@ class CreateCustomersTable extends Migration {
 			$table->date('date_of_birth')->nullable();
 			$table->string('address', 100)->nullable();
 			$table->string('city', 50)->nullable();
-			$table->string('privince', 2)->nullable();
+			$table->string('province', 2)->nullable();
 			$table->string('state', 50)->nullable();
 			$table->string('zip', 5)->nullable();
 			$table->string('phone')->nullable();
 			$table->string('mobile_phone')->nullable();
 			$table->string('email')->unique();
-			$table->timestamps();			
+			$table->unsignedInteger('id_school');			
+			$table->timestamps();
+
+			$table->foreign('id_school')
+			->references('id')->on('schools')
+			->onDelete('cascade');
 		});
 	}
 

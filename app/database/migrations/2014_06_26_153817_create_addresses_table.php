@@ -18,7 +18,7 @@ class CreateAddressesTable extends Migration {
 			$table->string('address', 50);
 			$table->string('city', 50);
 			$table->string('province', 50);
-			$table->string('state', 50);
+			$table->string('state', 50)->nullable();
 			$table->string('zip', 5);
 			$table->unsignedInteger('id_school');
 			$table->timestamps();

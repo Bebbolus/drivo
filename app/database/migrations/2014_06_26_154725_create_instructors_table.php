@@ -27,7 +27,12 @@ class CreateInstructorsTable extends Migration {
 			$table->string('phone')->nullable();
 			$table->string('mobile_phone')->nullable();
 			$table->string('email')->unique();
-			$table->timestamps();
+			$table->unsignedInteger('id_school');
+			$table->timestamps();			
+
+			$table->foreign('id_school')
+			->references('id')->on('schools')
+			->onDelete('cascade');
 		});
 	}
 

@@ -13,11 +13,12 @@ class Address extends Eloquent {
 							'city',
 							'province',
 							'state',
-							'zip'
+							'zip',
+							'id_school'
 						   ];
 
-	public function user()
+	public function school()
     {
-        return $this->belongsTo('Schools');
+        return $this->belongsTo('Schools', 'id_school', 'id');
     }
 }

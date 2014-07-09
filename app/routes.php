@@ -74,6 +74,19 @@ Route::when('admin/*', 'role:5');
 	}));
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Route::when('schooladmin/*', 'role:1');
+//_____________________________________________________________________________________________________________/
+//ADDRESS ROUTES
+Route::get ('schooladmin/address/list',  ['as'=>'address.list',     'uses'=>'AddressesController@showAll']);
+Route::get ('schooladmin/address/create',['as'=>'address.create',   'uses'=>'AddressesController@create']);
+Route::post('schooladmin/address/create',['as'=>'address.store', 'uses'=>'AddressesController@store'])->before('csrf');
+Route::post('schooladmin/address/delete',['as'=>'address.delete', 'uses'=>'AddressesController@delete']);
+Route::post('schooladmin/address/update',['as'=>'address.update', 'uses'=>'AddressesController@update'])->before('csrf');
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /*
 |--------------------------------------------------------------------------

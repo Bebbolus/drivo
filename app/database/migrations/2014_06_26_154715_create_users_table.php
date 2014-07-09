@@ -20,6 +20,11 @@ class CreateUsersTable extends Migration {
 			$table->string('username')->unique();
 			$table->string('password');
 			$table->string('remember_token')->nullable();
+			$table->unsignedInteger('id_school')->nullable();		
+
+			$table->foreign('id_school')
+			->references('id')->on('schools')
+			->onDelete('cascade');
 			
 			$table->timestamps();
 		});

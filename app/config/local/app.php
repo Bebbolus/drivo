@@ -16,5 +16,9 @@ return array(
 	'debug' => true,
 
 	'main_path' => 'drivo/public',
+		
+	'locale' => 'it',
+		
+	'fallback_locale' => 'en',
 
 );
