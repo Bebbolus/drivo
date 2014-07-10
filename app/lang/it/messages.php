@@ -5,6 +5,15 @@ return array(
 		
 	/*
 	|--------------------------------------------------------------------------
+	| ERRORI e WARNING di sessione
+	|--------------------------------------------------------------------------	|
+	*/		
+	'warning.header' =>'ATTENZIONE',
+	'error.header'	 =>'ERRORE',
+	
+	
+	/*
+	|--------------------------------------------------------------------------
 	| Titoli di pagina
 	|--------------------------------------------------------------------------	|
 	*/
@@ -16,6 +25,18 @@ return array(
 
 	'title.reservation' => 'Gestione prenotazioni',
 	'title.reservation.add' => 'Nuova prenotazione',
+	
+	/*
+	|--------------------------------------------------------------------------
+	| contenuti di pagina
+	|--------------------------------------------------------------------------	|
+	*/
+	//WELCOME PAGE
+		'welcome.msg' => 'Benvenuto in DRIVO!',
+		'welcome.btn' => 'ENTRA >>',
+	//LOGIN PAGE
+		'login.msg'   => 'Entra in DRIVO',
+
 	
 		
 	/*
@@ -47,6 +68,11 @@ return array(
 	'form.address.city' => 'Citt&agrave',
 	'form.address.province' => 'Provincia',
 	'form.address.zip' => 'CAP',
+	
+	//LOGIN PAGE		
+		'login.form.email' 	=> 'Inserisci il tuo indirizzo Email.',
+		'login.form.psw' 	=> 'Inserisci la tua Password.',
+		'login.form.submit' => 'Entra >>',
 		
 	/*
 	|--------------------------------------------------------------------------
@@ -65,6 +91,21 @@ return array(
 	|--------------------------------------------------------------------------	|
 	*/
 		
-	'result.address.created' => 'Indirizzo inserito'
+	'result.address.created' => 'Indirizzo inserito',
+	
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Testi usati per messaggi di ERRORE
+	|--------------------------------------------------------------------------	|
+	*/
+	
+	//LOGIN PAGE
+		//FORM
+			'login.form.error.email.header' => 'Attenzione',
+			'login.form.error.email.corp' 	=> 'la mail da lei inserita non risulta valida.',
+			'login.form.error.psw.header' 	=> 'Spiacenti',
+			'login.form.error.psw.corp' 	=> 'la password da lei inserita non risulta valida.'
+			
 		
 );

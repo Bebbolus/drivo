@@ -47,18 +47,16 @@ class SchoolsController extends \BaseController {
 		}
 
 
-		/*create the user*/
-		$user = School::create([
+		/*create the school*/
+		$school= School::create([
 			'name' => Input::get('name'),
 			'email'=>Input::get('email'),
 			'phone'=>Input::get('phone'),
 			'fax'=>Input::get('fax')
 		]);
 
-		//Auth::login($user);
 
-
-		return Redirect::to('admin/school/list')->with('messages', 'Scuola Guida Creata');
+		return Redirect::to('admin/school/list')->with('messages', 'Scuola Guida ' . $school->name .' Creata');
 	}
 
 
@@ -143,7 +141,7 @@ class SchoolsController extends \BaseController {
 		echo "sto per eliminare " . $school->username;
 		$school->delete();
 		
-		return Redirect::to('/admin/school/list')->with('message', 'Utente Eliminato');
+		return Redirect::to('/admin/school/list')->with('message', 'Autoscuola Eliminata');
 	}
 
 
