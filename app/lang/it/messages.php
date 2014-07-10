@@ -8,10 +8,14 @@ return array(
 	| Titoli di pagina
 	|--------------------------------------------------------------------------	|
 	*/
-		
-	'title.address.add' => 'Aggiungi indirizzo',
+
 	'title.address' => 'Gestione indirizzi',
+	'title.address.add' => 'Aggiungi indirizzo',
 	'title.address.list' => 'Lista indirizzi',
+	
+
+	'title.reservation' => 'Gestione prenotazioni',
+	'title.reservation.add' => 'Nuova prenotazione',
 	
 		
 	/*
@@ -19,10 +23,19 @@ return array(
 	| Testi usati per navigtion
 	|--------------------------------------------------------------------------	|
 	*/
-		
+	
+	'nav.address' => 'Indirizzi',
 	'nav.address.add' => 'Aggiungi indirizzo',
 	'nav.address.list' => 'Lista indirizzi',
 
+	'nav.reservation' => 'Prenotazioni',
+	'nav.reservation.add' => 'Nuova prenotazione',
+	'nav.reservation.licence.a' => 'Patente A',
+	'nav.reservation.licence.b' => 'Patente B',
+	'nav.reservation.licence.c' => 'Patente C',
+	'nav.reservation.licence.d' => 'Patente D',
+	'nav.reservation.licence.e' => 'Patente E',
+		
 	/*
 	|--------------------------------------------------------------------------
 	| Testi usati nei form

@@ -74,7 +74,10 @@ Route::when('admin/*', 'role:5');
 	}));
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	
 Route::when('schooladmin/*', 'role:1');
+
+
 //_____________________________________________________________________________________________________________/
 //ADDRESS ROUTES
 Route::get ('schooladmin/address/list',  ['as'=>'address.list',     'uses'=>'AddressesController@showAll']);
@@ -83,7 +86,17 @@ Route::post('schooladmin/address/create',['as'=>'address.store', 'uses'=>'Addres
 Route::post('schooladmin/address/delete',['as'=>'address.delete', 'uses'=>'AddressesController@delete']);
 Route::post('schooladmin/address/update',['as'=>'address.update', 'uses'=>'AddressesController@update'])->before('csrf');
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+//_____________________________________________________________________________________________________________/
+//RESERVATION ROUTES
+Route::get ('schooladmin/reservation/list',  ['as'=>'reservation.list',     'uses'=>'ReservationsController@showAll']);
+Route::get ('schooladmin/reservation/create',['as'=>'reservation.create',   'uses'=>'ReservationsController@create']);
+Route::post('schooladmin/reservation/create',['as'=>'reservation.store', 'uses'=>'ReservationsController@store'])->before('csrf');
+Route::post('schooladmin/reservation/delete',['as'=>'reservation.delete', 'uses'=>'ReservationsController@delete']);
+Route::post('schooladmin/reservation/update',['as'=>'reservation.update', 'uses'=>'ReservationsController@update'])->before('csrf');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
