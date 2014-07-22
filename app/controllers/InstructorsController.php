@@ -1,6 +1,7 @@
 <?php
 
-class ReservationsController extends \BaseController {
+use Illuminate\Support\Facades\Auth;
+class InstructorsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -20,14 +21,12 @@ class ReservationsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('reservations.create', array('main_path' => Config::get('app.main_path')));
-	}
-	
-	
+		return View::make('instructors.create', array('main_path' => Config::get('app.main_path')));
+	}	
 
 	public function showCalendar()
 	{
-		return View::make('reservations.calendar', array('main_path' => Config::get('app.main_path')));
+// 		return View::make('instructors.calendar', array('main_path' => Config::get('app.main_path')));
 	}
 
 	/**
@@ -40,10 +39,10 @@ class ReservationsController extends \BaseController {
 		$input=Input::all();
 	
 		$validator = Validator::make($input,[
-		'street'=>'required|min:2|alpha_num',
-		'city'=>'required|min:2|alpha',
-		'province'=>'required|max:2|alpha'//,
-		//'zip'=>'required|max:5|numeric'
+// 		'street'=>'required|min:2|alpha_num',
+// 		'city'=>'required|min:2|alpha',
+// 		'province'=>'required|max:2|alpha'//,
+// 		//'zip'=>'required|max:5|numeric'
 		]);
 
 
@@ -54,16 +53,7 @@ class ReservationsController extends \BaseController {
 		}
 
 
-		/*create the address*/
-		$user = Address::create([
-			'address' => Input::get('street'),
-			'city'=>Input::get('city'),
-			'province'=>Input::get('province'),
-			'zip'=>Input::get('zip'),
-			'id_school'=>Auth::user()->id_school
-		]);
-
-		//Auth::login($user);
+		
 
 
 		return Redirect::to('schooladmin/address/list')->with('messages', Lang::get('messages.result.address.created'));
@@ -90,14 +80,14 @@ class ReservationsController extends \BaseController {
 	 */
 	public function showAll()
 	{
-		return View::make('addresses.list', array('main_path' => Config::get('app.main_path'), 'allAddresses'=> $this->getAddresses() ));
+		return View::make('instructors.list', array('main_path' => Config::get('app.main_path'), 'allInstructors'=> $this->allInstructors() ));
 	}
 
 
 	
-	public function getAddresses()
+	public function allInstructors()
 	{
-		$list = Address::all();
+		$list = Instructors::where('id_school', '=', Auth::user()->id_school)->get();
 		return $list;
 	}
 

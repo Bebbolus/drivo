@@ -93,10 +93,23 @@ Route::post('schooladmin/address/update',['as'=>'address.update', 'uses'=>'Addre
 //_____________________________________________________________________________________________________________/
 //RESERVATION ROUTES
 Route::get ('schooladmin/reservation/list',  ['as'=>'reservation.list',     'uses'=>'ReservationsController@showAll']);
+Route::get ('schooladmin/reservation/calendar',['as'=>'reservation.calendar',   'uses'=>'ReservationsController@showCalendar']);
 Route::get ('schooladmin/reservation/create',['as'=>'reservation.create',   'uses'=>'ReservationsController@create']);
 Route::post('schooladmin/reservation/create',['as'=>'reservation.store', 'uses'=>'ReservationsController@store'])->before('csrf');
 Route::post('schooladmin/reservation/delete',['as'=>'reservation.delete', 'uses'=>'ReservationsController@delete']);
 Route::post('schooladmin/reservation/update',['as'=>'reservation.update', 'uses'=>'ReservationsController@update'])->before('csrf');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//_____________________________________________________________________________________________________________/
+//INSTRUCTORS ROUTES
+Route::get ('schooladmin/instructor/list',  ['as'=>'instructor.list',     'uses'=>'InstructorsController@showAll']);
+Route::get ('schooladmin/instructor/create',['as'=>'instructor.create',   'uses'=>'InstructorsController@create']);
+Route::post('schooladmin/instructor/create',['as'=>'instructor.store', 'uses'=>'InstructorsController@store'])->before('csrf');
+Route::get ('schooladmin/instructor/calendar',['as'=>'instructor.calendar',   'uses'=>'InstructorsController@showCalendar']);
+Route::post('schooladmin/instructor/delete',['as'=>'instructor.delete', 'uses'=>'InstructorsController@delete']);
+Route::post('schooladmin/instructor/update',['as'=>'instructor.update', 'uses'=>'InstructorsController@update'])->before('csrf');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

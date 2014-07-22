@@ -6,6 +6,8 @@ class SchoolsTableSeeder extends Seeder {
         //DB::table('users')->delete();
 		Eloquent::unguard();
         
+		School::where('id', '>', 0)->delete();
+		
 		School::create([	
 		'name' => 'ScuolaDiProva',
 		'email'=>'prova@test.com',

@@ -97,7 +97,7 @@ $(document).ready(function(){
 		onNext: function (tab, navigation, index) {
 			success.hide();
 			error.hide();
-
+			alert("ciao");
 			if (form.valid() == false) {
 				return false;
 			}

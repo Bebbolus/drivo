@@ -23,6 +23,11 @@ return array(
 	'title.address.list' => 'Lista indirizzi',
 	
 
+	'title.instructor' => 'Gestione istruttori',
+	'title.instructor.add' => 'Aggiungi istruttore',
+	'title.instructor.list' => 'Lista istruttori',
+		
+		
 	'title.reservation' => 'Gestione prenotazioni',
 	'title.reservation.add' => 'Nuova prenotazione',
 	
@@ -48,6 +53,10 @@ return array(
 	'nav.address' => 'Indirizzi',
 	'nav.address.add' => 'Aggiungi indirizzo',
 	'nav.address.list' => 'Lista indirizzi',
+		
+	'nav.instructor' => 'Istruttori',
+	'nav.instructor.add' => 'Aggiungi istruttore',
+	'nav.instructor.list' => 'Lista istruttori',
 
 	'nav.reservation' => 'Prenotazioni',
 	'nav.reservation.add' => 'Nuova prenotazione',
@@ -74,6 +83,14 @@ return array(
 		'login.form.psw' 	=> 'Inserisci la tua Password.',
 		'login.form.submit' => 'Entra >>',
 		
+	'form.wizard.step-title' => 'Step :index di :total',
+	'form.wizard.reservation.header' => 'Nuova prenotazione',
+	'form.wizard.reservation.date' => 'Seleziona data/ora',
+	'form.wizard.reservation.date.header' => 'Seleziona un intervallo',
+	'form.wizard.reservation.instructor' => 'Seleziona istruttore',
+	'form.wizard.reservation.vehicle' => 'Seleziona veicolo',
+	'form.wizard.reservation.confirm' => 'Conferma',
+		
 	/*
 	|--------------------------------------------------------------------------
 	| Testi usati nelle tabelle
@@ -83,6 +100,11 @@ return array(
 	'table.address.city' => 'Citt&agrave',
 	'table.address.province' => 'Provincia',
 	'table.address.zip' => 'CAP',
+		
+	'table.instructor.name' => 'Nome',
+	'table.instructor.lastname' => 'Cognome',
+	'table.instructor.email' => 'email',
+	'table.instructor.fiscal_code' => 'Codice Fiscale',
 	
 		
 	/*
