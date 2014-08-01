@@ -63,7 +63,6 @@ class ReservationsController extends \BaseController {
 			'id_school'=>Auth::user()->id_school
 		]);
 
-		//Auth::login($user);
 
 
 		return Redirect::to('schooladmin/address/list')->with('messages', Lang::get('messages.result.address.created'));

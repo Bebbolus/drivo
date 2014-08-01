@@ -14,6 +14,7 @@
 	{{ HTML::script('plugins/autosize/jquery.autosize.min.js') }}
 	{{ HTML::script('plugins/tagsinput/jquery.tagsinput.min.js') }}
 	{{ HTML::script('plugins/select2/select2.min.js') }} <!-- Styled select boxes -->
+	{{ HTML::script('plugins/bootstrap-multiselect/bootstrap-multiselect.min.js') }} 
 	
 	<!-- Demo JS -->
 	{{ HTML::script('assets/js/demo/form_components.js') }}
@@ -42,7 +43,14 @@
 								</div>
 							</div>
 							<div class="widget-content">
-								{{ Form::model($user, array('route' => 'user.update', 'class'=>'form-horizontal')) }}
+							<?PHP
+								$user = $data['user'];
+								$schoolList = $data['schoolList'];
+							?>
+								
+								
+								
+								{{Form::model($user, array('route' => 'user.update', 'class'=>'form-horizontal')) }}
 								<div class="form-wizard">
 										<div class="form-body">
 
@@ -111,6 +119,30 @@
 															}}
 														</div>
 													</div>
+													
+													<div class="form-group">
+														<label class="control-label col-md-3">Scuole Guida Abilitate</label>
+														<div class="col-md-10 input-width-large">
+														
+														
+															<select id="userSchools" name="userSchools[]" multiple="multiple" class="multiselect">
+															
+																@foreach($schoolList as $school)
+																	
+																 <option value= {{$school->id}} 
+																 
+																	 @foreach($user->school as $UserSchools)
+																		@if($school->name == $UserSchools->name ) {{'selected'}}
+																		@endif
+																	 @endforeach
+																 
+																 >{{$school->name}}</option>
+																@endforeach
+																
+															</select>
+														</div>
+														
+													</div>
 												
 													
 												</div>
@@ -129,15 +161,20 @@
 										<div class="form-actions fluid">
 											<div class="row">
 												<div class="col-md-12">
-													<div class="col-md-offset-3 col-md-9">
+													<div class="col-md-offset-3 col-md-2">
 														{{ Form::submit('MODIFICA', array('class' => 'btn btn-success button-submit')) }}
+														{{ Form::close() }}
+														
+													</div>
+													<div class="col-md-2">
+													<button class = "btn btn-primary button-submit" onClick="history.back()">ANNULLA</button>
 													</div>
 												</div>
 											</div>
 										</div>
 										<!-- /Form Actions -->
 									</div>
-								{{ Form::close() }}
+								
 							</div>
 						</div>
 						<!-- /Form Wizard -->

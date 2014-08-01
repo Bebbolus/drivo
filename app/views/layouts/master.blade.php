@@ -26,8 +26,10 @@
 		<link rel="stylesheet" href="assets/css/fontawesome/font-awesome-ie7.min.css">
 	<![endif]-->
 
+	<!-- To increase the speed, at the moment this remote css was disabled by R.D.F.
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-
+	-->
+	
 	<!--=== JavaScript ===-->
 	{{ HTML::script('assets/js/libs/jquery-1.10.2.min.js') }}
 	{{ HTML::script('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') }}
@@ -156,15 +158,18 @@
 					</ul>
 
 					<ul class="crumb-buttons">
-						<li class="range"><a href="home">
-							<i class="icon-calendar"></i>
-							<span>
-							<?PHP 
-							setlocale(LC_TIME, 'ita', 'it_IT.utf8_encode');
-							$dt = \Carbon\Carbon::now();
-							echo $dt->formatLocalized('%d %B %Y');
-							?></span>
-						</a></li>
+						<li class="range">
+							<a href="home">
+								<i class="icon-calendar"></i>
+								<span>
+								 <?PHP 
+								 setlocale(LC_TIME, 'ita', 'it_IT.utf8_encode');
+								 $dt = \Carbon\Carbon::now();
+								 echo $dt->formatLocalized('%d %B %Y');
+								 ?>
+								</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<!-- /Breadcrumbs line -->
@@ -188,12 +193,12 @@
 					</div>
 				@endif
 
-				@if ($message = Session::has('flash_message'))
+				@if ($message = Session::get('flash_message'))
 					<br>
 					<div class="alert alert-info alert-block">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<h4>Errore</h4>
 						{{{ $message }}}
+						
 					</div>
 				@endif
 

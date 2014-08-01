@@ -114,6 +114,7 @@ return array(
 	*/
 		
 	'result.address.created' => 'Indirizzo inserito',
+	'result.user.created' 	 => 'Utente correttamente creato',
 	
 	
 	/*

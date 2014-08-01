@@ -44,9 +44,10 @@
 								<th class="checkbox-column">
 									
 								</th>
-								<th>NomeUtente</th>
-								<th>email</th>
-								<th>gruppo</th>
+								<th>Nome Utente</th>
+								<th>E-mail</th>
+								<th>Gruppo</th>
+								<th>Scuola Guida</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -70,6 +71,13 @@
 								<td>{{$element->username}}</td>
 								<td>{{$element->email}}</td>
 								<td>{{$element->group}}</td>
+								
+									<td>
+										@foreach($element->school as $school)
+										{{$school->name}}
+										@endforeach
+									</td>
+								
 							</tr>
 							@endforeach			
 						</tbody>

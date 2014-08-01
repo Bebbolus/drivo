@@ -22,4 +22,9 @@ class School extends Eloquent {
     {
         return $this->hasMany('Addresses', 'id', 'id_address');
     }
+	
+	public function users()
+    {
+        return $this->belongsToMany('User');
+    }
 }

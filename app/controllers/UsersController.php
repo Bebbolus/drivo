@@ -7,9 +7,10 @@ class UsersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($userID)
 	{
-		//
+		//TEMPORARY
+		return View::make('users.profile', array('main_path' => Config::get('app.main_path'), 'targhetUser'=> $this->getTheUser($userID) ));
 	}
 
 
@@ -60,7 +61,8 @@ class UsersController extends \BaseController {
 		//Auth::login($user);
 
 
-		return Redirect::to('admin/user/list')->with('messages', 'Utente Creato');
+		return Redirect::to('admin/user/list')->with('flash_message',  Lang::get('messages.result.user.created'));
+		
 	}
 
 
@@ -78,9 +80,15 @@ class UsersController extends \BaseController {
 	
 	public function getAllUser()
 	{
-		$list = User::all();
+		$list = User::with('school')->get();
 		return $list;
 	}
+	
+	public function getTheUser($userID)
+	{
+		$user = User::find($userID);
+		return $user;
+	} 
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -88,10 +96,22 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit()
+	public function edit($id)
 	{
-		return View::make('users.edit', array('main_path' => Config::get('app.main_path')))->with('user', User::find($id));;
-	}
+		
+		
+		$data= [
+		'user' => User::findOrFail($id),
+		'schoolList' => School::all()
+		];
+		return View::make('users.edit', array('main_path' => Config::get('app.main_path'))) 
+			->with( 'data', $data );
+		
+		/*$data['user'] = User::find($id)->with('school')->get();
+		$data['schoolList'] = School::all();
+		return View::make('users.edit', array('main_path' => Config::get('app.main_path'))); //->with('data', $data);
+		//return View::make('users.edit', array('main_path' => Config::get('app.main_path')))->with('user', User::find($id)->with('school')->get());
+	*/}
 
 
 	/**
@@ -108,10 +128,10 @@ class UsersController extends \BaseController {
 		'email'=>'required|email', 
 		'username'=>'required|min:2|alpha_num',
 		'group'=>'required',
-		'id'=>'required|numeric|exists:users,id'
+		'id'=>'required|numeric|exists:users,id',
+		'userSchools'=>'array|exists:schools,id'
 		]);
 
-		$user = User::find(Input::get('id'));
 
 		if($validator->fails())
 		{
@@ -119,9 +139,22 @@ class UsersController extends \BaseController {
 		}
 		
 		
+		$user = User::find(Input::get('id'));
+		
 		$user->email = Input::get('email');
 		$user->username= Input::get('username');
 		$user->group= Input::get('group');
+		
+		
+		
+		//remove ALL old scholl
+		$user->school()->detach();
+		if(Input::has('userSchools')){
+			//scholl ADD
+			foreach (Input::get('userSchools') as $school){			
+					$user->school()->attach($school);
+			}
+		}
 		
 		$user->save();
 

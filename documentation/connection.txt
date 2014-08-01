@@ -1,0 +1,4 @@
+mdpsgest.cloudapp.net/phpmyadmin
+root
+GestGuide2014
+
