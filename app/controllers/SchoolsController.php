@@ -99,9 +99,16 @@ class SchoolsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$data= [
+		  'school' => School::findOrFail($id),
+		  'consortiumList' => School::where('is_consortium', '=', true)
+									  ->where('id', '!=', $id)
+									  ->get()
+		  ];
+		 
 		
 		return View::make('schools.edit', array('main_path' => Config::get('app.main_path'))) 
-			->with('school', School::findOrFail($id));
+			->with('data', $data);
 		
 	}
 
@@ -122,7 +129,8 @@ class SchoolsController extends \BaseController {
 		'phone'=>'required|numeric',
 		'fax'=>'numeric',
 		'id'=>'required|numeric|exists:schools,id',
-		'is_consortium'=>'numeric'
+		'is_consortium'=>'numeric',
+		'schoolConsrtium'=>'array|exists:schools,id'
 		]);
 
 
@@ -147,6 +155,15 @@ class SchoolsController extends \BaseController {
 		else
 		{
 			$school->is_consortium= false;
+		}
+		
+		//remove ALL old consortium
+		$school->consortium()->detach();
+		if(Input::has('schoolConsrtium')){
+			//consortium ADD
+			foreach (Input::get('schoolConsrtium') as $consortium){			
+					$school->consortium()->attach($consortium);
+			}
 		}
 		
 		$school->save();

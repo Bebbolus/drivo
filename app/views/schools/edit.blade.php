@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('specific_plugin')
+	{{ HTML::script('plugins/select2/select2.min.js') }} <!-- Styled select boxes -->
+	{{ HTML::script('plugins/bootstrap-multiselect/bootstrap-multiselect.min.js') }} 
+
+@stop
 
 @section('breadcrumbs')
 <li class="current">
@@ -23,7 +28,14 @@
 								</div>
 							</div>
 							<div class="widget-content">
-								
+							<?PHP
+								$school = $data['school'];
+								$consortiumList = $data['consortiumList'];
+							?>
+							
+							
+							
+							
 								{{Form::model($school, array('route' => 'school.update', 'class'=>'form-horizontal')) }}
 									<div class="form-wizard">
 										<div class="form-body">
@@ -111,6 +123,30 @@
 																						')
 															}}
 														</div>
+													</div>
+													
+													<div class="form-group">
+														<label class="control-label col-md-3">Scuole Guida Abilitate</label>
+														<div class="col-md-10 input-width-large">
+														
+														
+															<select id="schoolConsrtium" name="schoolConsrtium[]" multiple="multiple" class="multiselect">
+															
+																@foreach($consortiumList as $consortium)
+																	
+																 <option value= {{$consortium->id}} 
+																 
+																	 @foreach($school->consortium as $userConsoriumList)
+																		@if($consortium->name == $userConsoriumList->name ) {{'selected'}}
+																		@endif
+																	 @endforeach
+																 
+																 >{{$consortium->name}}</option>
+																@endforeach
+																
+															</select>
+														</div>
+														
 													</div>
 													
 													

@@ -23,6 +23,13 @@ class School extends Eloquent {
         return $this->hasMany('Addresses', 'id', 'id_address');
     }
 	
+	public function consortium()
+    {
+		
+		return $this->belongsToMany('School', 'consortium_schools');
+		
+    }
+	
 	public function users()
     {
         return $this->belongsToMany('User');
