@@ -52,18 +52,6 @@ Route::when('admin/*', 'role:5');
 	Route::post('admin/user/update',['as'=>'user.update', 	'uses'=>'UsersController@update'])->before('csrf');
 	
 	Route::get ('admin/user/edit/{userID}',  ['as'=>'user.edit',     'uses'=>'UsersController@edit']);
-	
-	
-	/* TO BE REMOVED:____________________________________________
-	tengo questa parte solo per ricordarmi di toglierla anche dalle altre parti
-	Route::get('admin/user/edit/{id}', array('as' => 'user.edit', function($id) 
-	{
-		return View::make('users.edit', array('main_path' => Config::get('app.main_path'))) 
-			->with('user', User::findOrFail($id));
-	}));
-	_____________________________________________________________*/
-	//TEMPORARY. REMOVE IN PRODUCTION ENVIROMENT
-	Route::get ('admin/user/profile/{userID}',  ['as'=>'user.profile',     'uses'=>'UsersController@index']);
 
 //_____________________________________________________________________________________________________________/
 //SCHOOL ADMINISTRATION ROUTE
@@ -73,12 +61,7 @@ Route::when('admin/*', 'role:5');
 	Route::post('admin/school/delete',['as'=>'school.delete', 'uses'=>'SchoolsController@delete']);
 	Route::post('admin/school/update',['as'=>'school.update', 'uses'=>'SchoolsController@update'])->before('csrf');
 	
-	
-	Route::get('admin/school/edit/{id}', array('as' => 'school.edit', function($id) 
-	{
-		return View::make('school.edit', array('main_path' => Config::get('app.main_path'))) 
-			->with('school', School::findOrFail($id));
-	}));
+	Route::get('admin/school/edit/{id}', ['as' => 'school.edit', 'uses'=>'SchoolsController@edit']);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	

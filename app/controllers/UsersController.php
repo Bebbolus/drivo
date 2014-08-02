@@ -98,20 +98,15 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		
-		
 		$data= [
-		'user' => User::findOrFail($id),
-		'schoolList' => School::all()
-		];
+		  'user' => User::findOrFail($id),
+		  'schoolList' => School::all()
+		  ];
+		
 		return View::make('users.edit', array('main_path' => Config::get('app.main_path'))) 
 			->with( 'data', $data );
 		
-		/*$data['user'] = User::find($id)->with('school')->get();
-		$data['schoolList'] = School::all();
-		return View::make('users.edit', array('main_path' => Config::get('app.main_path'))); //->with('data', $data);
-		//return View::make('users.edit', array('main_path' => Config::get('app.main_path')))->with('user', User::find($id)->with('school')->get());
-	*/}
+	}
 
 
 	/**
@@ -139,7 +134,7 @@ class UsersController extends \BaseController {
 		}
 		
 		
-		$user = User::find(Input::get('id'));
+		$user = User::findOrFail(Input::get('id'));
 		
 		$user->email = Input::get('email');
 		$user->username= Input::get('username');

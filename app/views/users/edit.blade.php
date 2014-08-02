@@ -23,7 +23,7 @@
 
 @section('breadcrumbs')
 <li class="current">
-	<a href="/{{$main_path}}/admin/user/create" title="">Aggiungi Utente</a>
+	<a href="/{{$main_path}}/admin/user/create" title="">Modifica Utente</a>
 </li>
 @stop
 
@@ -54,21 +54,7 @@
 								<div class="form-wizard">
 										<div class="form-body">
 
-											<!--=== Tab Content ===-->
-											<div class="tab-content">
-
-												<!--=== Available On All Tabs ===-->
-												<div class="alert alert-danger hide-default">
-													<button class="close" data-dismiss="alert"></button>
-													You missed some fields. They have been highlighted.
-												</div>
-												<div class="alert alert-success hide-default">
-													<button class="close" data-dismiss="alert"></button>
-													Good job! :-)
-												</div>
-												<!-- /Available On All Tabs -->
-
-												<!--=== Basic Information ===-->
+												<!--===Information ===-->
 												<div class="tab-pane active" id="tab1">
 													<h3 class="block padding-bottom-10px">Inserisci le informazioni utente</h3>
 
@@ -146,15 +132,11 @@
 												
 													
 												</div>
-												<!-- /Basic Information -->
+												<!-- /Information -->
 
-												
-											</div>
-											<!-- /Tab Content -->
-										</div>
 
 										
-										{{ Form::hidden('id', $user->id) }}
+												{{ Form::hidden('id', $user->id) }}
 										
 										
 										<!--=== Form Actions ===-->

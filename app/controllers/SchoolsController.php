@@ -99,7 +99,10 @@ class SchoolsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		
+		return View::make('schools.edit', array('main_path' => Config::get('app.main_path'))) 
+			->with('school', School::findOrFail($id));
+		
 	}
 
 
@@ -109,9 +112,46 @@ class SchoolsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$input=Input::all();
+	
+		$validator = Validator::make($input,[
+		'email'=>'required|email', 
+		'name'=>'required|min:2|alpha_num',
+		'phone'=>'required|numeric',
+		'fax'=>'numeric',
+		'id'=>'required|numeric|exists:schools,id',
+		'is_consortium'=>'numeric'
+		]);
+
+
+		if($validator->fails())
+		{
+			dd($validator->messages());
+			//return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
+		
+		
+		$school = School::findOrFail(Input::get('id'));
+		
+		$school->email = Input::get('email');
+		$school->name= Input::get('name');
+		$school->phone= Input::get('phone');
+		$school->fax= Input::get('fax');
+		
+		if (Input::get('is_consortium') === '1')
+		{
+			$school->is_consortium= true;
+		}
+		else
+		{
+			$school->is_consortium= false;
+		}
+		
+		$school->save();
+
+		return Redirect::to('admin/school/list')->with('messages', 'Utente Modificato con successo!');
 	}
 
 
