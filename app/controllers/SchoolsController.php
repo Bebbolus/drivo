@@ -143,6 +143,8 @@ class SchoolsController extends \BaseController {
 		
 		$school = School::findOrFail(Input::get('id'));
 		
+		
+		
 		$school->email = Input::get('email');
 		$school->name= Input::get('name');
 		$school->phone= Input::get('phone');
@@ -161,8 +163,22 @@ class SchoolsController extends \BaseController {
 		$school->consortium()->detach();
 		if(Input::has('schoolConsrtium')){
 			//consortium ADD
-			foreach (Input::get('schoolConsrtium') as $consortium){			
+			foreach (Input::get('schoolConsrtium') as $consortium){	
+					
 					$school->consortium()->attach($consortium);
+					
+					
+					/*$school->consortium()->sync(array($consortium));
+					
+					
+					dd(
+						DB::table('consortium_schools')->insert(
+								[
+								'consortium_id' => $consortium, 
+								'school_id' => $school->id,
+								]
+							)
+					);*/
 			}
 		}
 		

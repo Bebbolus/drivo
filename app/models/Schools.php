@@ -26,7 +26,7 @@ class School extends Eloquent {
 	public function consortium()
     {
 		
-		return $this->belongsToMany('School', 'consortium_schools');
+		return $this->belongsToMany('School', 'consortium_schools', 'school_id', 'consortium_id');
 		
     }
 	

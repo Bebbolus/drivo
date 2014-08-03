@@ -10,7 +10,8 @@ ADMIN
 	X-> CRUD utente
 	X-> modifica permessi utente
 	CRUD patenti
-	80%-> CRUD scuola guida (manca consorzi)
+	
+	80-> CRUD scuola guida (manca assegnazione indirizzi, veicoli, istruttori e scheda di riassunto di tutti i dati di una singola scuola )
 	
 SCHOOL ADMIN (ASSOCIATION ADMIN)
 	Anagrafica ISTRUTTORE

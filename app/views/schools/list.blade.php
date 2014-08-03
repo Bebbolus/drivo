@@ -44,34 +44,46 @@
 								<th class="checkbox-column">
 									
 								</th>								
-								<th>Nome</th>
-								<th>email</th>
-								<th>telefono</th>
-								<th>fax</th>
+								<th data-class="expand">Nome</th>
+								<th data-hide="phone">email</th>
+								<th data-hide="phone">telefono</th>
+								<th data-hide="phone, tablet">fax</th>
+								<th data-hide="phone, tablet">Consorzi</th>
+								<th>&Egrave; un consorzio</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($allSchool as $element)
 							<tr>
-								<td class="align-center">
-									<span class="btn-group">
+								<td>
 										{{ Form::open(array('url' => 'admin/school/edit/'. $element->id, 'method' => 'get','class'=>'form-horizontal')) }}	
 										{{ HTML::decode(Form::button('<i class="icon-pencil"></i>', array('class'=>'btn btn-xs bs-tooltip', 'type'=>'submit'))) }}
 										{{ Form::close() }}
-									</span>
 								</td>
-								<td class="align-center">
-									<span class="btn-group">
+								<td>
 										{{ Form::open(array('route' => 'school.delete', 'class'=>'form-horizontal')) }}	
 										{{ Form::hidden('id', $element->id) }}
 										{{ HTML::decode(Form::button('<i class="icon-trash"></i>', array('class'=>'btn btn-xs bs-tooltip', 'type'=>'submit'))) }}
 										{{ Form::close() }}
-									</span>
 								</td>
 								<td>{{$element->name}}</td>
 								<td>{{$element->email}}</td>
 								<td>{{$element->phone}}</td>
-								<td>{{$element->fax}}</td>						
+								<td>{{$element->fax}}</td>
+								<!-- CONSORTIUM LIST-->
+									<td>
+										@foreach($element->consortium as $consortium)
+										{{$consortium->name}}
+										@endforeach
+									</td>
+								<!-- ./CONSORTIUM LIST-->
+								
+								<!-- IS CONSORTIUM -->	
+								<td>
+									@if($element->is_consortium) <span class="label label-danger">{{'SI'}}</span>
+									@endif
+								</td>
+								<!-- ./IS CONSORTIUM -->								
 							</tr>
 							@endforeach			
 						</tbody>
