@@ -80,15 +80,14 @@ class InstructorsController extends \BaseController {
 	 */
 	public function showAll()
 	{
-		return View::make('instructors.list', array('main_path' => Config::get('app.main_path'), 'allInstructors'=> $this->allInstructors() ));
+		return View::make('instructors.list', array('main_path' => Config::get('app.main_path')))->with( 'allInstructors', $this->allInstructors() );
 	}
 
 
 	
 	public function allInstructors()
 	{
-		$list = Instructors::where('id_school', '=', Auth::user()->id_school)->get();
-		return $list;
+		return Instructors::all();		
 	}
 
 	/**
@@ -126,22 +125,21 @@ class InstructorsController extends \BaseController {
 		$input=Input::all();
 	
 		$validator = Validator::make($input,[
-		'id'=>'required|numeric|exists:schools,id'
+		'id'=>'required|numeric|exists:instructors,id'
 		]);
 
 
 
 		if($validator->fails())
 		{
+			dd($validator->messages());
 			return Redirect::back()->withInput()->withErrors($validator->messages());
 		}
 		
-		$school = School::find(Input::get('id'));
-		
-		echo "sto per eliminare " . $school->username;
+		$school = Instructors::find(Input::get('id'));
 		$school->delete();
 		
-		return Redirect::to('/admin/school/list')->with('message', 'Utente Eliminato');
+		return Redirect::to('/schooladmin/instructor/list')->with('message', 'Utente Eliminato');
 	}
 
 

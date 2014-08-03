@@ -24,9 +24,7 @@ class Instructors extends Eloquent {
 					'phone',
 					'mobile_phone',
 					'email',
-					'id_school',
-					'created_at',
-					'updated_at'
+					'id_school'
 						   ];
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -36,6 +34,6 @@ class Instructors extends Eloquent {
 
 	public function school()
     {
-        return $this->belongsTo('Schools', 'id_school', 'id');
+        return $this->belongsTo('School', 'id_school', 'id');
     }
 }

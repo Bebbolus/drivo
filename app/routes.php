@@ -103,6 +103,8 @@ Route::get ('schooladmin/instructor/calendar',['as'=>'instructor.calendar',   'u
 Route::post('schooladmin/instructor/delete',['as'=>'instructor.delete', 'uses'=>'InstructorsController@delete']);
 Route::post('schooladmin/instructor/update',['as'=>'instructor.update', 'uses'=>'InstructorsController@update'])->before('csrf');
 
+Route::get('schooladmin/instructor/edit/{id}', ['as' => 'instructor.edit', 'uses'=>'InstructorsController@edit']);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
