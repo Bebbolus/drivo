@@ -45,11 +45,13 @@
 									
 								</th>								
 								<th data-class="expand">Nome</th>
-								<th data-hide="phone">email</th>
+								<th data-hide="phone, tablet">email</th>
 								<th data-hide="phone">telefono</th>
 								<th data-hide="phone, tablet">fax</th>
+								<th data-hide="phone">&Egrave; un consorzio</th>
 								<th data-hide="phone, tablet">Consorzi</th>
-								<th>&Egrave; un consorzio</th>
+								<th data-hide="phone, tablet">Indirizzi</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -70,6 +72,14 @@
 								<td>{{$element->email}}</td>
 								<td>{{$element->phone}}</td>
 								<td>{{$element->fax}}</td>
+								
+								<!-- IS CONSORTIUM -->	
+								<td>
+									@if($element->is_consortium) <span class="label label-danger">{{'SI'}}</span>
+									@endif
+								</td>
+								<!-- ./IS CONSORTIUM -->	
+								
 								<!-- CONSORTIUM LIST-->
 									<td>
 										@foreach($element->consortium as $consortium)
@@ -78,12 +88,15 @@
 									</td>
 								<!-- ./CONSORTIUM LIST-->
 								
-								<!-- IS CONSORTIUM -->	
-								<td>
-									@if($element->is_consortium) <span class="label label-danger">{{'SI'}}</span>
-									@endif
-								</td>
-								<!-- ./IS CONSORTIUM -->								
+								<!-- ADDRESS LIST-->
+									<td>
+										@foreach($element->address as $address)
+										"{{$address->address}} - {{$address->city}}"
+										@endforeach
+									</td>
+								<!-- ./ADDRESS LIST-->
+								
+															
 							</tr>
 							@endforeach			
 						</tbody>

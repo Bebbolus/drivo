@@ -20,7 +20,7 @@ class School extends Eloquent {
 						   
 	public function address()
     {
-        return $this->hasMany('Addresses', 'id', 'id_address');
+        return $this->hasMany('Address', 'id_school');
     }
 	
 	public function consortium()
