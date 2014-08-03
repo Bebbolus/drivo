@@ -21,7 +21,7 @@ class InstructorsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('instructors.create', array('main_path' => Config::get('app.main_path')));
+	return View::make('instructors.create', array('main_path' => Config::get('app.main_path')))->with('schoolList', School::all());
 	}	
 
 	public function showCalendar()
