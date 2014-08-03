@@ -19,6 +19,6 @@ class Address extends Eloquent {
 
 	public function school()
     {
-        return $this->belongsTo('Schools', 'id_school', 'id');
+        return $this->belongsTo('School', 'id_school', 'id');
     }
 }

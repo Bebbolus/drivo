@@ -20,7 +20,7 @@ class AddressesController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('addresses.create', array('main_path' => Config::get('app.main_path')));
+		return View::make('addresses.create', array('main_path' => Config::get('app.main_path')))->with('schoolList', School::all());
 	}
 
 
@@ -31,33 +31,35 @@ class AddressesController extends \BaseController {
 	 */
 	public function store()
 	{
+		
 		$input=Input::all();
 	
 		$validator = Validator::make($input,[
-		'street'=>'required|min:2|alpha_num',
+		'address'=>'required|min:3',
 		'city'=>'required|min:2|alpha',
-		'province'=>'required|max:2|alpha'//,
-		//'zip'=>'required|max:5|numeric'
+		'province'=>'required|max:2|alpha',
+		'zip'=>'required|numeric',
+		'id_school'=>'required|exists:schools,id'
 		]);
 
 
 
 		if($validator->fails())
 		{
+			//dd($validator->messages());
 			return Redirect::back()->withInput()->withErrors($validator->messages());
 		}
 
 
 		/*create the address*/
-		$user = Address::create([
-			'address' => Input::get('street'),
+		$address = Address::create([
+			'address' => Input::get('address'),
 			'city'=>Input::get('city'),
 			'province'=>Input::get('province'),
 			'zip'=>Input::get('zip'),
-			'id_school'=>Auth::user()->id_school
+			'id_school'=>Input::get('id_school')
 		]);
 
-		//Auth::login($user);
 
 
 		return Redirect::to('schooladmin/address/list')->with('messages', Lang::get('messages.result.address.created'));
@@ -103,7 +105,12 @@ class AddressesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data = [
+		'schoolList' => School::all(),
+		'address' => Address::findOrFail($id)
+		];
+		
+		return View::make('addresses.edit', array('main_path' => Config::get('app.main_path')))->with('data', $data);
 	}
 
 
@@ -113,9 +120,41 @@ class AddressesController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$input=Input::all();
+	
+		$validator = Validator::make($input,[
+		'address'=>'required|min:3',
+		'city'=>'required|min:2|alpha',
+		'province'=>'required|max:2|alpha',
+		'zip'=>'required|numeric',
+		'id_school'=>'required|exists:schools,id'
+		]);
+
+
+
+		if($validator->fails())
+		{
+			//dd($validator->messages());
+			return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
+
+
+		/*create the address*/
+		$address = Address::findOrFail(Input::get('id'));
+		
+		
+			$address->address = Input::get('address');
+			$address->city=Input::get('city');
+			$address->province=Input::get('province');
+			$address->zip=Input::get('zip');
+			$address->id_school=Input::get('id_school');
+		
+
+		$address->save();
+
+		return Redirect::to('schooladmin/address/list')->with('messages', Lang::get('messages.result.address.created'));
 	}
 
 
@@ -130,7 +169,7 @@ class AddressesController extends \BaseController {
 		$input=Input::all();
 	
 		$validator = Validator::make($input,[
-		'id'=>'required|numeric|exists:schools,id'
+		'id'=>'required|numeric|exists:addresses,id'
 		]);
 
 
@@ -140,12 +179,10 @@ class AddressesController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator->messages());
 		}
 		
-		$school = School::find(Input::get('id'));
+		$address = Address::find(Input::get('id'));
+		$address->delete();
 		
-		echo "sto per eliminare " . $school->username;
-		$school->delete();
-		
-		return Redirect::to('/admin/school/list')->with('message', 'Utente Eliminato');
+		return Redirect::to('/schooladmin/address/list')->with('message', 'Indirizzo Eliminato');
 	}
 
 

@@ -76,6 +76,8 @@ Route::post('schooladmin/address/create',['as'=>'address.store', 'uses'=>'Addres
 Route::post('schooladmin/address/delete',['as'=>'address.delete', 'uses'=>'AddressesController@delete']);
 Route::post('schooladmin/address/update',['as'=>'address.update', 'uses'=>'AddressesController@update'])->before('csrf');
 
+Route::get('schooladmin/address/edit/{id}', ['as' => 'address.edit', 'uses'=>'AddressesController@edit']);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

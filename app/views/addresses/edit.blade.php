@@ -25,8 +25,14 @@
 					</div>
 				</div>
 			</div>
+			
+			<?PHP
+				$schoolList = $data['schoolList'];
+				$address = $data['address'];
+			?>
+							
 			<div class="widget-content">
-				{{ Form::open(array('route' => 'address.store', 'class'=>'form-horizontal')) }}
+				{{Form::model($address, array('route' => 'address.update', 'class'=>'form-horizontal')) }}
 					<div class="form-wizard">
 						<div class="form-body">
 						
@@ -52,7 +58,7 @@
 									<div class="form-group">
 										<label class="control-label col-md-3"><?php  echo Lang::get('messages.form.address.street'); ?> <span class="required">*</span></label>
 										<div class="col-md-4">
-											{{ Form::text('address', '', array('class' => 'form-control required', 'id'=>'street', 'required'=>'required')) }}
+											{{ Form::text('address', $address->address, array('class' => 'form-control required', 'id'=>'street', 'required'=>'required')) }}
 											{{
 												$errors->first('address', '
 													<div class="alert alert-danger alert-block">
@@ -68,7 +74,7 @@
 									<div class="form-group">
 										<label class="control-label col-md-3"><?php  echo Lang::get('messages.form.address.city'); ?> <span class="required">*</span></label>
 										<div class="col-md-4">
-											{{ Form::text('city', '', array('class' => 'form-control required', 'id'=>'city', 'required'=>'required')) }}
+											{{ Form::text('city', $address->city, array('class' => 'form-control required', 'id'=>'city', 'required'=>'required')) }}
 											{{	$errors->first('city', '
 												<div class="alert alert-danger alert-block">
 													<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -83,7 +89,7 @@
 									<div class="form-group">
 										<label class="control-label col-md-3"><?php  echo Lang::get('messages.form.address.province'); ?> <span class="required">*</span></label>
 														<div class="col-md-4">
-															{{ Form::select('province', array('NONE' => 'Seleziona una provincia', 'RM' => 'RM', 'LT' => 'LT'), 'NONE', array('class' => 'form-control input-width-large required', 'id'=>'province', 'required'=>'required')); }}
+															{{ Form::select('province', array('NONE' => 'Seleziona una provincia', 'RM' => 'RM', 'LT' => 'LT'), $address->province, array('class' => 'form-control input-width-large required', 'id'=>'province', 'required'=>'required')); }}
  															<!-- {{ Form::text('province', '', array('class' => 'form-control required', 'id'=>'province', 'required'=>'required')) }} -->
 											{{	$errors->first('province', '
 												<div class="alert alert-danger alert-block">
@@ -99,7 +105,7 @@
 									<div class="form-group">
 										<label class="control-label col-md-3"><?php  echo Lang::get('messages.form.address.zip'); ?> <span class="required">*</span></label>
 										<div class="col-md-4">
-											{{ Form::text('zip', '', array('class' => 'form-control input-width-small required', 'id'=>'zip')) }}
+											{{ Form::text('zip', $address->zip, array('class' => 'form-control input-width-small required', 'id'=>'zip')) }}
 											{{	$errors->first('zip', '
 												<div class="alert alert-danger alert-block">
 													<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -122,7 +128,11 @@
 						
 												
 												<option value="{{ $school->id }}" >{{ $school->name }}</option>
-
+													
+													
+													
+													@if($address->school->id == $school->id ) selected="selected" 
+													@endif
 											
 												@endforeach
 											</select>
@@ -141,24 +151,27 @@
 								</div>
 								<!-- /Basic Information -->
 
-								
-							</div>
-							<!-- /Tab Content -->
-						</div>
-
-						<!--=== Form Actions ===-->
-						<div class="form-actions fluid">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="col-md-offset-3 col-md-9">
-										{{ Form::submit('CREA', array('class' => 'btn btn-success button-submit')) }}
+							{{ Form::hidden('id', $address->id) }}
+										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /Form Actions -->
-					</div>
-				{{ Form::close() }}
+										<!--=== Form Actions ===-->
+										<div class="form-actions fluid">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="col-md-offset-3 col-md-2">
+														{{ Form::submit('MODIFICA', array('class' => 'btn btn-success button-submit')) }}
+														{{ Form::close() }}
+														
+													</div>
+													<div class="col-md-2">
+													<button class = "btn btn-primary button-submit" onClick="history.back()">ANNULLA</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /Form Actions -->
+									</div>
+								{{ Form::close() }}
 			</div>
 		</div>
 		<!-- /Form Wizard -->

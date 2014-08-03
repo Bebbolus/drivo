@@ -43,10 +43,11 @@
 							<th class="checkbox-column">
 								
 							</th>								
-							<th><?php echo Lang::get('messages.table.address.street');?></th>
-							<th><?php echo Lang::get('messages.table.address.city');?></th>
-							<th><?php echo Lang::get('messages.table.address.province');?></th>
-							<th><?php echo Lang::get('messages.table.address.zip');?></th>
+							<th data-class="expand"><?php echo Lang::get('messages.table.address.street');?></th>
+							<th data-hide="phone"><?php echo Lang::get('messages.table.address.city');?></th>
+							<th data-hide="phone, tablet"><?php echo Lang::get('messages.table.address.province');?></th>
+							<th data-hide="phone, tablet"><?php echo Lang::get('messages.table.address.zip');?></th>
+							<th data-hide="phone">Autoscuola</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -70,7 +71,8 @@
 							<td>{{$element->address}}</td>
 							<td>{{$element->city}}</td>
 							<td>{{$element->province}}</td>
-							<td>{{$element->zip}}</td>						
+							<td>{{$element->zip}}</td>
+							<td>{{$element->school->name}}</td>
 						</tr>
 						@endforeach			
 					</tbody>
